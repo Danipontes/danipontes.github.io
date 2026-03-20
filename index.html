@@ -2,639 +2,908 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Danielle Pontes — Dra. Ciência da Informação · UEA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Epilogue:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Danielle Pompeu Noronha Pontes, Dra.</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
 
-:root{
-  --bg:#080810;--bg1:#0d0d18;--bg2:#11111f;
-  --surface:#16162a;--surface2:#1c1c33;
-  --border:rgba(255,255,255,.06);--border-v:rgba(139,92,246,.25);
-  --text:#f0f0ff;--text2:#a0a0c0;--text3:#60607a;
-  --violet:#8b5cf6;--violet-lt:#a78bfa;
-  --cyan:#22d3ee;--cyan-lt:#67e8f9;
-  --rose:#f472b6;--amber:#fbbf24;
-  --grad:linear-gradient(135deg,#8b5cf6 0%,#22d3ee 100%);
-  --grad-text:linear-gradient(90deg,#a78bfa 0%,#22d3ee 60%);
-  --f-head:'Bricolage Grotesque',sans-serif;
-  --f-body:'Epilogue',sans-serif;
+:root {
+  --ink:    #18181B; --ink2:  #52525B; --ink3:  #A1A1AA;
+  --paper:  #FAFAF9; --paper2:#F4F4F0; --white: #FFFFFF;
+  --line:   #E4E4E7; --line2: #D4D4D8;
+  --teal:   #0D9488; --teal2: #0F766E; --teals: #CCFBF1;
+  --amber:  #D97706; --ambers:#FEF3C7;
+  --violet: #7C3AED; --violets:#EDE9FE;
+  --rose:   #E11D48; --roses: #FFE4E6;
+  --blue:   #2563EB; --blues: #DBEAFE;
+  --green:  #16A34A; --greens:#DCFCE7;
+  --sh0: 0 1px 3px rgba(0,0,0,.05);
+  --sh1: 0 2px 8px rgba(0,0,0,.07),0 1px 3px rgba(0,0,0,.04);
+  --sh2: 0 8px 24px rgba(0,0,0,.09),0 2px 6px rgba(0,0,0,.04);
+  --sh3: 0 20px 48px rgba(0,0,0,.11),0 4px 12px rgba(0,0,0,.05);
+  --sht: 0 8px 24px rgba(13,148,136,.22);
+  --r:  6px; --rl: 12px; --rxl: 20px; --rf: 9999px;
+  --sidebar: 280px;
 }
 
-body{background:var(--bg);color:var(--text);font-family:var(--f-body);font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* ══ RESET ═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+a { color: var(--teal); text-decoration: none; }
+a:hover { color: var(--teal2); text-decoration: underline; }
+::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line2); border-radius: var(--rf); }
 
-.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(ellipse 60% 50% at 20% 20%,rgba(139,92,246,.08) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 60% at 80% 80%,rgba(34,211,238,.06) 0%,transparent 60%),
-    radial-gradient(ellipse 40% 40% at 60% 10%,rgba(244,114,182,.04) 0%,transparent 50%)}
+/* ══ KEYFRAMES ═══════════════════════════════════════════ */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(22px) } to { opacity:1; transform:translateY(0) } }
+@keyframes fadeIn   { from { opacity:0 } to { opacity:1 } }
+@keyframes slideIn  { from { opacity:0; transform:translateX(-16px) } to { opacity:1; transform:translateX(0) } }
+@keyframes float    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes pulse    { 0%,100%{box-shadow:0 0 0 0 rgba(13,148,136,.4)} 70%{box-shadow:0 0 0 8px rgba(13,148,136,0)} }
+@keyframes lineGrow { from{transform:scaleY(0);opacity:0} to{transform:scaleY(1);opacity:1} }
+@keyframes orbit    { from{transform:rotate(0deg) translateX(108px) rotate(0deg)} to{transform:rotate(360deg) translateX(108px) rotate(-360deg)} }
+@keyframes countUp  { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
 
-/* NAV */
-nav{position:fixed;top:0;width:100%;z-index:300;height:60px;padding:0 2.5rem;
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(8,8,16,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:var(--f-head);font-weight:700;font-size:.92rem;letter-spacing:-.01em;
-  color:var(--text);text-decoration:none;display:flex;align-items:center;gap:.6rem}
-.nav-pip{width:28px;height:28px;border-radius:6px;background:var(--grad);
-  display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:#fff}
-.nav-links{display:flex;gap:.1rem;list-style:none}
-.nav-links a{font-family:var(--f-body);font-size:.78rem;font-weight:500;color:var(--text3);
-  text-decoration:none;padding:.35rem .8rem;border-radius:6px;transition:color .15s,background .15s}
-.nav-links a:hover{color:var(--text);background:var(--surface)}
-.nav-links a.on{color:var(--violet-lt);background:rgba(139,92,246,.1)}
+/* ══ REVEAL ══════════════════════════════════════════════ */
+.rv  { opacity:0; transform:translateY(20px); transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1) }
+.rv.on { opacity:1; transform:none }
+.sg > * { opacity:0; transform:translateY(18px); transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1) }
+.sg.on > * { opacity:1; transform:none }
+.sg.on > *:nth-child(1){transition-delay:.03s}.sg.on > *:nth-child(2){transition-delay:.08s}
+.sg.on > *:nth-child(3){transition-delay:.13s}.sg.on > *:nth-child(4){transition-delay:.18s}
+.sg.on > *:nth-child(5){transition-delay:.23s}.sg.on > *:nth-child(6){transition-delay:.28s}
+.sg.on > *:nth-child(7){transition-delay:.33s}.sg.on > *:nth-child(8){transition-delay:.38s}
+.sg.on > *:nth-child(9){transition-delay:.43s}.sg.on > *:nth-child(n+10){transition-delay:.48s}
 
-/* HERO */
-.hero{position:relative;z-index:1;min-height:100vh;display:grid;
-  grid-template-columns:1fr 310px;gap:4rem;align-items:center;padding:80px 2.5rem 5rem}
-.hero::before{content:'';position:absolute;top:15%;right:8%;width:340px;height:340px;border-radius:50%;
-  background:radial-gradient(circle,rgba(139,92,246,.12) 0%,transparent 70%);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:10%;left:5%;width:220px;height:220px;border-radius:50%;
-  background:radial-gradient(circle,rgba(34,211,238,.08) 0%,transparent 70%);pointer-events:none}
+/* ══ LAYOUT ══════════════════════════════════════════════ */
+.layout { display: flex; min-height: 100vh; }
 
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;
-  font-family:var(--f-body);font-size:.73rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--cyan);margin-bottom:1.75rem;padding:.3rem .9rem .3rem .4rem;
-  background:rgba(34,211,238,.07);border:1px solid rgba(34,211,238,.15);border-radius:100px;
-  animation:fadeUp .7s ease both}
-.eye-dot{width:20px;height:20px;border-radius:50%;background:rgba(34,211,238,.15);
-  display:flex;align-items:center;justify-content:center}
-.eye-dot::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:ping 2s ease-in-out infinite}
-@keyframes ping{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
-
-h1{font-family:var(--f-head);font-size:clamp(2.8rem,6vw,5.2rem);font-weight:800;
-  line-height:.95;letter-spacing:-.03em;margin-bottom:1.75rem;animation:fadeUp .7s ease .1s both}
-.h1-plain{display:block;color:var(--text)}
-.h1-grad{display:block;background:var(--grad-text);-webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;background-clip:text}
-
-.hero-type{font-family:var(--f-body);font-size:.97rem;color:var(--text3);
-  margin-bottom:2rem;min-height:1.5rem;animation:fadeUp .7s ease .2s both}
-.hero-type .cur{display:inline-block;width:2px;height:1em;background:var(--violet-lt);
-  vertical-align:text-bottom;animation:blink .8s step-end infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-
-.hero-desc{font-size:.97rem;color:var(--text2);line-height:1.82;max-width:50ch;
-  margin-bottom:2.5rem;animation:fadeUp .7s ease .25s both}
-.hero-desc strong{color:var(--text);font-weight:500}
-.hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;animation:fadeUp .7s ease .35s both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
-/* PROFILE CARD */
-.pcard{position:relative;background:var(--bg1);border:1px solid var(--border);
-  border-radius:16px;overflow:hidden;animation:fadeUp .7s ease .5s both}
-.pcard-top{padding:1.75rem;background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(34,211,238,.06));
-  border-bottom:1px solid var(--border)}
-.pcard-avatar{width:60px;height:60px;border-radius:12px;background:var(--grad);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--f-head);font-size:1.3rem;font-weight:800;color:#fff;
-  margin-bottom:1rem;box-shadow:0 8px 24px rgba(139,92,246,.3)}
-.pcard-name{font-family:var(--f-head);font-weight:700;font-size:1rem;line-height:1.2;margin-bottom:.2rem}
-.pcard-role{font-size:.72rem;color:var(--text3)}
-.pcard-body{padding:1.4rem 1.75rem;display:flex;flex-direction:column;gap:1.1rem}
-.pcard-row{display:flex;align-items:flex-start;gap:.7rem;font-size:.8rem;color:var(--text2)}
-.pcard-ico{width:28px;height:28px;border-radius:7px;background:var(--surface);
-  display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;margin-top:.1rem}
-.pcard-tags{display:flex;flex-wrap:wrap;gap:.4rem}
-.ptag{font-size:.65rem;font-weight:500;padding:.2rem .6rem;border-radius:100px;
-  background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);color:var(--violet-lt)}
-.pcard-status{display:flex;align-items:center;gap:.6rem;font-size:.73rem;color:var(--text3);
-  padding:.6rem;border-radius:8px;background:rgba(34,211,238,.05);border:1px solid rgba(34,211,238,.1)}
-.sdot{width:7px;height:7px;border-radius:50%;background:#34d399;flex-shrink:0;animation:ping 2s infinite}
-
-/* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--f-body);
-  font-size:.82rem;font-weight:600;padding:.65rem 1.4rem;border-radius:8px;
-  text-decoration:none;border:none;cursor:pointer;transition:all .18s;white-space:nowrap}
-.btn-primary{background:var(--grad);color:#fff;box-shadow:0 4px 16px rgba(139,92,246,.3)}
-.btn-primary:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 8px 24px rgba(139,92,246,.4)}
-.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border)}
-.btn-ghost:hover{border-color:var(--border-v);color:var(--violet-lt);background:rgba(139,92,246,.06)}
-.btn-sm{padding:.45rem 1rem;font-size:.75rem}
-
-/* SECTION */
-section.s{position:relative;z-index:1;padding:6rem 2.5rem}
-section.s-alt{background:var(--bg1)}
-.s-border{border-top:1px solid var(--border)}
-.s-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--violet-lt);margin-bottom:1.25rem}
-.s-tag-num{font-size:.63rem;color:var(--text3);background:var(--surface);padding:.15rem .5rem;border-radius:4px}
-h2{font-family:var(--f-head);font-size:clamp(1.9rem,3.8vw,3.2rem);font-weight:800;
-  letter-spacing:-.03em;line-height:1;color:var(--text);margin-bottom:.75rem}
-h2 .dim{color:var(--text3);font-weight:300}
-.s-sub{font-size:.93rem;color:var(--text2);line-height:1.82;max-width:54ch;margin-bottom:3rem}
-
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:start}
-.about-text{display:flex;flex-direction:column;gap:1.1rem}
-.about-text p{font-size:.95rem;color:var(--text2);line-height:1.85}
-.about-text strong{color:var(--text);font-weight:600}
-.pull{padding:1.25rem 1.5rem;border-left:2px solid var(--violet);
-  background:rgba(139,92,246,.05);border-radius:0 8px 8px 0;margin-top:.5rem}
-.pull p{font-family:var(--f-body);font-style:italic;font-size:.97rem;color:var(--violet-lt);line-height:1.65}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);
-  border-radius:12px;overflow:hidden;border:1px solid var(--border)}
-.stat{background:var(--bg1);padding:1.75rem 1.5rem;transition:background .2s}
-.stat:hover{background:var(--surface)}
-.stat-n{font-family:var(--f-head);font-size:2.5rem;font-weight:800;line-height:1;
-  background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;margin-bottom:.35rem}
-.stat-l{font-size:.73rem;color:var(--text3);font-weight:500;letter-spacing:.04em}
-
-/* RESEARCH */
-.r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);
-  border-radius:12px;overflow:hidden;border:1px solid var(--border)}
-.r-card{background:var(--bg1);padding:2rem 1.75rem;transition:background .2s;
-  display:flex;flex-direction:column;gap:.65rem;position:relative}
-.r-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
-.r-card:hover{background:var(--surface)}
-.r-card:hover::after{transform:scaleX(1)}
-.r-num{font-size:.66rem;color:var(--text3);letter-spacing:.14em;font-weight:500}
-.r-card h3{font-family:var(--f-head);font-size:.95rem;font-weight:700;color:var(--text);line-height:1.35}
-.r-card p{font-size:.81rem;color:var(--text2);line-height:1.75;flex:1}
-
-/* ── TOOLS (destaque) ── */
-.tools-section{background:var(--bg2)}
-.tools-intro{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:3rem}
-.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-.tool-card{
-  background:var(--bg1);
-  border:1px solid var(--border);
-  border-radius:12px;padding:1.75rem;
-  position:relative;overflow:hidden;
-  transition:border-color .25s,background .25s,transform .25s;
-  display:flex;flex-direction:column;gap:.9rem;
+/* ── SIDEBAR ─────────────────────────────────────────── */
+.sidebar {
+  width: var(--sidebar); flex-shrink: 0;
+  background: var(--ink);
+  display: flex; flex-direction: column;
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  animation: slideIn .5s ease-out;
 }
-.tool-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(139,92,246,.06) 0%,rgba(34,211,238,.03) 100%);
-  opacity:0;transition:opacity .25s;
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); }
+
+.sb-profile { padding: 36px 28px 28px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.sb-photo-wrap { position: relative; width: 96px; height: 96px; margin: 0 auto 16px; }
+.sb-photo {
+  width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+  border: 2px solid rgba(255,255,255,.15);
+  box-shadow: 0 0 0 4px rgba(13,148,136,.3);
+  display: block;
 }
-.tool-card:hover{border-color:var(--border-v);background:var(--surface);transform:translateY(-4px)}
-.tool-card:hover::before{opacity:1}
-.tool-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
-.tool-icon{
-  width:44px;height:44px;border-radius:10px;
-  background:linear-gradient(135deg,rgba(139,92,246,.2),rgba(34,211,238,.1));
-  border:1px solid rgba(139,92,246,.2);
-  display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;
+.sb-orbit {
+  position: absolute; inset: -14px; border-radius: 50%;
+  border: 1.5px dashed rgba(13,148,136,.35);
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
 }
-.tool-status{
-  font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  padding:.22rem .65rem;border-radius:100px;
+.sb-dot {
+  position: absolute; bottom: 4px; right: 4px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #10B981; border: 2px solid var(--ink);
+  animation: pulse 2.5s infinite;
 }
-.status-active{background:rgba(52,211,153,.1);color:#34d399;border:1px solid rgba(52,211,153,.2)}
-.status-dev{background:rgba(251,191,36,.1);color:var(--amber);border:1px solid rgba(251,191,36,.2)}
-.tool-card h3{font-family:var(--f-head);font-size:1rem;font-weight:700;color:var(--text);line-height:1.3}
-.tool-card p{font-size:.82rem;color:var(--text2);line-height:1.75;flex:1}
-.tool-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.25rem}
-.tech-tag{font-size:.62rem;font-weight:600;padding:.18rem .6rem;border-radius:6px;
-  background:rgba(34,211,238,.07);border:1px solid rgba(34,211,238,.15);color:var(--cyan-lt)}
-.tool-link{
-  display:inline-flex;align-items:center;gap:.4rem;
-  font-size:.75rem;font-weight:600;color:var(--violet-lt);
-  text-decoration:none;padding:.45rem .9rem;border-radius:8px;
-  background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);
-  transition:all .18s;align-self:flex-start;margin-top:auto;
+.sb-name {
+  font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 600;
+  color: #fff; text-align: center; line-height: 1.25; margin-bottom: 6px;
 }
-.tool-link:hover{background:rgba(139,92,246,.15);border-color:var(--border-v);transform:translateX(2px)}
+.sb-title { font-size: .72rem; color: rgba(255,255,255,.45); text-align: center; font-weight: 400; line-height: 1.5; }
+.sb-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(13,148,136,.2); color: #5EEAD4;
+  border: 1px solid rgba(13,148,136,.3);
+  font-size: .65rem; font-weight: 600; letter-spacing: .06em;
+  padding: 3px 10px; border-radius: var(--rf); margin: 12px auto 0; display: block; text-align: center; width: fit-content;
+}
 
-/* PUBLICATIONS */
-.pub-list{display:flex;flex-direction:column;gap:.6rem}
-.pub-row{display:grid;grid-template-columns:3.5rem 1fr auto;gap:1.5rem;align-items:start;
-  background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.5rem;
-  transition:border-color .2s,background .2s}
-.pub-row:hover{border-color:var(--border-v);background:var(--surface)}
-.pub-yr{font-size:.72rem;font-weight:700;color:var(--violet-lt);padding-top:.1rem;letter-spacing:.03em}
-.pub-t{font-family:var(--f-head);font-size:.93rem;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:.35rem}
-.pub-v{font-size:.77rem;color:var(--text3)}
-.ptype{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  padding:.2rem .6rem;border-radius:6px;align-self:start;white-space:nowrap;margin-top:.1rem}
-.pj{background:rgba(139,92,246,.1);color:var(--violet-lt);border:1px solid rgba(139,92,246,.2)}
-.pc{background:rgba(34,211,238,.08);color:var(--cyan);border:1px solid rgba(34,211,238,.18)}
-.pl{background:rgba(251,191,36,.08);color:var(--amber);border:1px solid rgba(251,191,36,.18)}
+.sb-nav { padding: 20px 16px; flex: 1; }
+.sb-nav-label { font-size: .6rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.25); padding: 0 12px; margin-bottom: 6px; margin-top: 20px; }
+.sb-nav-label:first-child { margin-top: 0; }
+.sb-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border-radius: var(--r);
+  font-size: .82rem; font-weight: 500; color: rgba(255,255,255,.55);
+  transition: background .15s, color .15s; cursor: pointer;
+  text-decoration: none; margin-bottom: 2px;
+}
+.sb-link:hover, .sb-link.on { background: rgba(255,255,255,.07); color: #fff; text-decoration: none; }
+.sb-link.on { color: #5EEAD4; }
+.sb-link.on .sb-icon { color: #5EEAD4; }
+.sb-icon { font-size: .95rem; width: 20px; text-align: center; opacity: .7; }
+.sb-link.on .sb-icon { opacity: 1; }
+.sb-count {
+  margin-left: auto; font-size: .65rem; font-weight: 700;
+  background: rgba(255,255,255,.1); color: rgba(255,255,255,.5);
+  padding: 2px 7px; border-radius: var(--rf);
+}
+.sb-link.on .sb-count { background: rgba(13,148,136,.25); color: #5EEAD4; }
 
-/* TEACHING */
-.t-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
-.t-card{background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:1.75rem;
-  transition:border-color .2s,background .2s}
-.t-card:hover{border-color:var(--border-v);background:var(--surface)}
-.t-top{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
-.t-lvl{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:6px}
-.lg{background:rgba(139,92,246,.1);color:var(--violet-lt);border:1px solid rgba(139,92,246,.2)}
-.lp{background:rgba(244,114,182,.08);color:var(--rose);border:1px solid rgba(244,114,182,.18)}
-.t-card h3{font-family:var(--f-head);font-weight:700;font-size:.93rem;color:var(--text);line-height:1.35;margin-bottom:.6rem}
-.t-card p{font-size:.81rem;color:var(--text2);line-height:1.7}
+.sb-footer { padding: 20px 24px; border-top: 1px solid rgba(255,255,255,.08); }
+.sb-orcid { font-size: .68rem; color: rgba(255,255,255,.3); line-height: 1.7; }
+.sb-orcid a { color: rgba(255,255,255,.4); }
+.sb-orcid a:hover { color: #5EEAD4; }
 
-/* CONTACT */
-.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.c-lede{font-size:1rem;color:var(--text2);line-height:1.85;margin:1.5rem 0 2rem}
-.c-lede strong{color:var(--text);font-weight:600}
-.link-stack{display:flex;flex-direction:column;gap:.55rem}
-.ext{display:flex;align-items:center;gap:1rem;padding:.9rem 1.1rem;background:var(--bg1);
-  border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);
-  transition:all .18s}
-.ext:hover{border-color:var(--border-v);background:var(--surface);transform:translateX(4px)}
-.ext-ico{width:34px;height:34px;border-radius:8px;background:var(--surface);
-  display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
-.ext-body{flex:1;min-width:0}
-.ext-lbl{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--text3);display:block;margin-bottom:.1rem}
-.ext-val{font-size:.82rem;color:var(--text2);font-weight:500;white-space:nowrap;
-  overflow:hidden;text-overflow:ellipsis}
-.ext-arr{color:var(--text3);font-size:.8rem;transition:color .18s,transform .18s}
-.ext:hover .ext-arr{color:var(--violet-lt);transform:translateX(3px)}
+/* ── MAIN ─────────────────────────────────────────────── */
+.main { flex: 1; min-width: 0; overflow-x: hidden; }
 
-/* FOOTER */
-footer{position:relative;z-index:1;border-top:1px solid var(--border);
-  padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:var(--bg)}
-.f-l,.f-r{font-size:.7rem;color:var(--text3)}
-.f-c{font-family:var(--f-head);font-weight:700;font-size:.82rem;
-  background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* ══ TOP HEADER ══════════════════════════════════════════ */
+.top-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  padding: 0 48px;
+  position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.top-header-inner {
+  max-width: 960px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 56px;
+}
+.th-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: .8rem; color: var(--ink3); }
+.th-bc-sep { color: var(--line2); }
+.th-bc-cur { color: var(--ink2); font-weight: 500; }
+.th-actions { display: flex; align-items: center; gap: 12px; }
+.th-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: var(--r); border: 1px solid var(--line);
+  font-size: .75rem; font-weight: 600; color: var(--ink2); background: var(--white);
+  cursor: pointer; transition: all .15s; text-decoration: none;
+}
+.th-btn:hover { border-color: var(--teal); color: var(--teal); text-decoration: none; }
+.th-btn-primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+.th-btn-primary:hover { background: var(--teal2); color: #fff; border-color: var(--teal2); }
 
-/* SCROLL REVEAL */
-.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
-.rv.in{opacity:1;transform:none}
-.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
-.d4{transition-delay:.28s}.d5{transition-delay:.35s}.d6{transition-delay:.42s}
+/* ══ CONTENT WRAPPER ══════════════════════════════════════ */
+.content { padding: 48px; max-width: 960px; margin: 0 auto; }
 
-/* RESPONSIVE */
-@media(max-width:1060px){
-  .hero{grid-template-columns:1fr}.pcard{display:none}
-  .about-grid,.tools-intro{grid-template-columns:1fr;gap:3rem}
-  .r-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:720px){
-  nav{padding:0 1.25rem}.nav-links{display:none}
-  .hero,.s{padding-left:1.25rem;padding-right:1.25rem}
-  .hero{padding-top:76px;padding-bottom:3.5rem}
-  .r-grid,.t-grid,.c-grid,.tools-grid{grid-template-columns:1fr;gap:.75rem}
-  .c-grid{gap:3rem}
-  .pub-row{grid-template-columns:2.8rem 1fr}.ptype{display:none}
-  footer{flex-direction:column;gap:.5rem;text-align:center}}
+/* ══ HERO CARD ════════════════════════════════════════════ */
+.hero-card {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #0D3D3A 100%);
+  border-radius: var(--rxl); padding: 48px 52px;
+  position: relative; overflow: hidden; margin-bottom: 32px;
+  animation: fadeIn .6s ease-out;
+}
+.hero-card::before {
+  content: ''; position: absolute; inset: 0; border-radius: var(--rxl);
+  background: url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero-card::after {
+  content: ''; position: absolute;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(13,148,136,.18) 0%, transparent 70%);
+  right: -60px; bottom: -80px; pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: .65rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: #5EEAD4; margin-bottom: 14px;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 20px; height: 1.5px; background: #5EEAD4; }
+.hero-name {
+  font-family: 'Fraunces', serif; font-size: 2.6rem; font-weight: 700;
+  color: #fff; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 6px;
+}
+.hero-name em { font-style: italic; font-weight: 300; color: #99F6E4; }
+.hero-subtitle { font-size: .88rem; color: rgba(255,255,255,.5); margin-bottom: 24px; font-weight: 400; }
+.hero-bio { font-size: .9rem; color: rgba(255,255,255,.65); line-height: 1.8; max-width: 580px; margin-bottom: 28px; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; position: relative; z-index: 1; }
+.htag {
+  padding: 5px 12px; border-radius: var(--rf);
+  font-size: .68rem; font-weight: 600; letter-spacing: .05em;
+  border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.65);
+  background: rgba(255,255,255,.06); transition: all .2s;
+}
+.htag:hover { background: rgba(13,148,136,.2); border-color: rgba(13,148,136,.4); color: #5EEAD4; }
+
+/* ══ STAT CARDS ROW ═══════════════════════════════════════ */
+.stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 32px; }
+.sc {
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--rl);
+  padding: 20px; box-shadow: var(--sh0);
+  position: relative; overflow: hidden;
+  transition: box-shadow .2s, transform .2s;
+}
+.sc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--sc-color, var(--teal)); }
+.sc:hover { box-shadow: var(--sh1); transform: translateY(-2px); }
+.sc-num {
+  font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700;
+  color: var(--sc-color, var(--teal)); line-height: 1; display: block; margin-bottom: 6px;
+}
+.sc-label { font-size: .72rem; font-weight: 600; color: var(--ink3); letter-spacing: .04em; text-transform: uppercase; line-height: 1.4; }
+
+/* ══ SECTION TITLE ════════════════════════════════════════ */
+.sec { margin-bottom: 48px; }
+.sec-title {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+  padding-bottom: 16px; border-bottom: 1px solid var(--line);
+}
+.sec-icon { font-size: 1.1rem; width: 36px; height: 36px; border-radius: var(--r); display: flex; align-items: center; justify-content: center; background: var(--paper2); flex-shrink: 0; }
+.sec-label { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 600; color: var(--ink); letter-spacing: -.01em; }
+.sec-count { margin-left: auto; font-size: .7rem; font-weight: 700; color: var(--teal); background: var(--teals); padding: 3px 10px; border-radius: var(--rf); }
+
+/* ══ PRODUCTION DASHBOARD ═════════════════════════════════ */
+.prod-dashboard { background: var(--white); border: 1px solid var(--line); border-radius: var(--rl); overflow: hidden; box-shadow: var(--sh0); margin-bottom: 32px; }
+.pd-header { padding: 20px 24px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+.pd-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 600; color: var(--ink); }
+.pd-total { font-size: .75rem; color: var(--ink2); }
+.pd-total strong { font-size: 1.1rem; color: var(--teal); font-family: 'Fraunces', serif; }
+.pd-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
+.pd-item {
+  padding: 20px 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  transition: background .15s;
+}
+.pd-item:hover { background: var(--paper2); }
+.pd-item:nth-child(3n) { border-right: none; }
+.pd-item:nth-last-child(-n+3) { border-bottom: none; }
+.pd-row { display: flex; align-items: center; gap: 12px; }
+.pd-ico { width: 36px; height: 36px; border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.pd-n { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 700; line-height: 1; }
+.pd-lbl { font-size: .73rem; font-weight: 600; color: var(--ink2); margin-top: 3px; line-height: 1.35; }
+.pd-sub { font-size: .65rem; color: var(--ink3); margin-top: 2px; line-height: 1.4; }
+.pd-progress { margin-top: 10px; height: 3px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.pd-bar { height: 100%; border-radius: 3px; transition: width 1.2s cubic-bezier(.22,1,.36,1); width: 0; }
+
+/* ══ TIMELINE ══════════════════════════════════════════════ */
+.tl { display: flex; flex-direction: column; }
+.tli { display: grid; grid-template-columns: 90px 22px 1fr; gap: 0 14px; }
+.tly { font-size: .72rem; font-weight: 700; color: var(--teal); text-align: right; padding-top: 3px; line-height: 1.4; }
+.tlm { display: flex; flex-direction: column; align-items: center; }
+.tld { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); flex-shrink: 0; margin-top: 5px; z-index: 1; box-shadow: 0 0 0 3px var(--teals); transition: transform .2s; }
+.tli:hover .tld { transform: scale(1.5); }
+.tll { flex: 1; width: 2px; background: linear-gradient(to bottom, var(--teal), var(--line)); min-height: 20px; transform-origin: top; transform: scaleY(0); opacity: 0; }
+.tli:last-child .tll { display: none; }
+.tlb { padding-bottom: 28px; }
+.tlr { font-size: .9rem; font-weight: 600; color: var(--ink); margin-bottom: 2px; line-height: 1.35; }
+.tlo { font-size: .78rem; color: var(--teal); font-weight: 500; margin-bottom: 4px; }
+.tlx { font-size: .78rem; color: var(--ink2); line-height: 1.65; }
+
+/* ══ ARTICLE ITEMS ════════════════════════════════════════ */
+.ai {
+  background: var(--white); border: 1px solid var(--line);
+  border-left: 3px solid var(--teal); border-radius: var(--r);
+  padding: 16px 20px; margin-bottom: 12px;
+  transition: box-shadow .2s, transform .2s, border-left-color .2s;
+}
+.ai:hover { box-shadow: var(--sh1); transform: translateX(4px); border-left-color: var(--teal2); }
+.ai-tag { font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); margin-bottom: 5px; }
+.ai-title { font-size: .88rem; font-weight: 600; color: var(--ink); line-height: 1.45; margin-bottom: 5px; }
+.ai-ref { font-size: .75rem; color: var(--ink2); margin-bottom: 8px; line-height: 1.5; }
+.ai-link { font-size: .72rem; font-weight: 600; color: var(--teal); display: inline-flex; align-items: center; gap: 5px; transition: gap .18s; }
+.ai-link:hover { gap: 8px; text-decoration: none; }
+
+/* ══ CARD GRID ════════════════════════════════════════════ */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.card {
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--rl);
+  padding: 20px; box-shadow: var(--sh0);
+  transition: box-shadow .22s, transform .22s, border-color .22s;
+  position: relative; overflow: hidden;
+}
+.card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--teal); opacity: 0; transition: opacity .25s; }
+.card:hover { box-shadow: var(--sh1); transform: translateY(-2px); border-color: var(--line2); }
+.card:hover::after { opacity: .5; }
+.card-accent { border-top: 3px solid var(--teal); }
+.card-amber { border-top: 3px solid var(--amber); }
+.card-violet { border-top: 3px solid var(--violet); }
+.c-ico { width: 38px; height: 38px; border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: 12px; transition: transform .2s; }
+.card:hover .c-ico { transform: scale(1.1) rotate(-3deg); }
+.c-meta { font-size: .68rem; font-weight: 700; letter-spacing: .06em; color: var(--teal); margin-bottom: 5px; }
+.c-title { font-size: .88rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.35; }
+.c-desc { font-size: .78rem; color: var(--ink2); line-height: 1.65; }
+.c-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 12px; font-size: .72rem; font-weight: 600; color: var(--teal); transition: gap .18s; }
+.c-link:hover { gap: 8px; text-decoration: none; }
+
+/* ══ PATENT CARD ══════════════════════════════════════════ */
+.pat-card { background: linear-gradient(135deg, var(--teals), rgba(204,251,241,.3)); border-color: rgba(13,148,136,.25); }
+.pat-num { font-size: .65rem; font-weight: 700; color: var(--teal); letter-spacing: .07em; text-transform: uppercase; margin-bottom: 4px; }
+
+/* ══ SUB HEADING ══════════════════════════════════════════ */
+.sub {
+  font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink3); margin: 32px 0 14px;
+  display: flex; align-items: center; gap: 8px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--line);
+}
+.sub::before { content: ''; display: block; width: 14px; height: 2px; background: var(--teal); }
+
+/* ══ BADGES ═══════════════════════════════════════════════ */
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag {
+  padding: 4px 11px; border-radius: var(--rf);
+  font-size: .68rem; font-weight: 600; letter-spacing: .04em;
+  background: var(--paper2); color: var(--ink2); border: 1px solid var(--line);
+  transition: all .15s; cursor: default;
+}
+.tag:hover { background: var(--teals); color: var(--teal2); border-color: rgba(13,148,136,.3); }
+.tag-teal { background: var(--teals); color: var(--teal2); border-color: rgba(13,148,136,.2); }
+.tag-amber { background: var(--ambers); color: var(--amber); border-color: rgba(217,119,6,.2); }
+.tag-violet { background: var(--violets); color: var(--violet); border-color: rgba(124,58,237,.2); }
+
+/* ══ CONTACT ══════════════════════════════════════════════ */
+.cc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.cc { background: var(--white); border: 1px solid var(--line); border-radius: var(--rl); padding: 18px 20px; box-shadow: var(--sh0); display: flex; align-items: flex-start; gap: 12px; transition: box-shadow .2s, transform .2s; }
+.cc:hover { box-shadow: var(--sh1); transform: translateY(-2px); }
+.cc-ico { width: 38px; height: 38px; border-radius: var(--r); background: var(--teals); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+.cc-lbl { font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 3px; }
+.cc-val { font-size: .82rem; font-weight: 500; color: var(--ink); word-break: break-all; line-height: 1.45; }
+
+/* ══ FOOTER ═══════════════════════════════════════════════ */
+.footer { background: var(--ink); color: rgba(255,255,255,.35); text-align: center; padding: 24px 32px; font-size: .75rem; line-height: 1.9; }
+.footer strong { color: rgba(255,255,255,.8); }
+.footer a { color: rgba(255,255,255,.45); }
+.footer a:hover { color: #5EEAD4; text-decoration: none; }
+
+/* ══ HAMBURGER / MOBILE ═══════════════════════════════════ */
+.mob-toggle { display: none; position: fixed; top: 12px; left: 12px; z-index: 400; width: 40px; height: 40px; border-radius: var(--r); background: var(--ink); border: none; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px; box-shadow: var(--sh2); }
+.mob-toggle span { display: block; width: 18px; height: 2px; background: #fff; border-radius: 2px; transition: .3s; }
+
+/* ══ RESPONSIVE ═══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  :root { --sidebar: 240px; }
+  .g3 { grid-template-columns: 1fr 1fr; }
+  .pd-grid { grid-template-columns: repeat(2,1fr); }
+  .cc-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 768px) {
+  .sidebar { position: fixed; left: -280px; top: 0; height: 100vh; z-index: 300; transition: left .3s cubic-bezier(.22,1,.36,1); width: 280px; }
+  .sidebar.open { left: 0; box-shadow: var(--sh3); }
+  .mob-toggle { display: flex; }
+  .mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 299; }
+  .mob-overlay.on { display: block; }
+  .main { width: 100%; }
+  .top-header { padding: 0 20px 0 60px; }
+  .content { padding: 24px 20px; }
+  .hero-card { padding: 32px 28px; }
+  .hero-name { font-size: 1.9rem; }
+  .stats-row { grid-template-columns: repeat(2,1fr); }
+  .g2, .g3 { grid-template-columns: 1fr; }
+  .pd-grid { grid-template-columns: 1fr; }
+  .cc-grid { grid-template-columns: 1fr; }
+  .tli { grid-template-columns: 70px 20px 1fr; gap: 0 10px; }
+}
 </style>
 </head>
 <body>
-<div class="mesh" aria-hidden="true"></div>
 
-<nav>
-  <a href="#" class="nav-logo">
-    <div class="nav-pip" aria-hidden="true">DP</div>
-    Danielle Pontes
-  </a>
-  <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#pesquisa">Pesquisa</a></li>
-    <li><a href="#ferramentas">Ferramentas</a></li>
-    <li><a href="#publicacoes">Publicações</a></li>
-    <li><a href="#ensino">Ensino</a></li>
-    <li><a href="#contato">Contato</a></li>
-  </ul>
-</nav>
+<button class="mob-toggle" id="mobToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+<div class="mob-overlay" id="mobOverlay"></div>
 
-<!-- HERO -->
-<section class="hero" id="topo">
-  <div>
-    <div class="hero-eyebrow">
-      <span class="eye-dot" aria-hidden="true"></span>
-      Professora · Pesquisadora · Doutora · UEA
+<div class="layout">
+<!-- ════════ SIDEBAR ════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sb-profile">
+    <div class="sb-photo-wrap">
+      <img class="sb-photo" alt="Danielle Pompeu Noronha Pontes"
+        src="https://lattes.cnpq.br/foto/0735042255042649"
+        onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'96\' height=\'96\'%3E%3Crect width=\'96\' height=\'96\' rx=\'48\' fill=\'%230D3D3A\'/%3E%3Ctext x=\'48\' y=\'56\' font-size=\'34\' text-anchor=\'middle\' font-family=\'DM+Sans\' fill=\'%235EEAD4\' font-weight=\'700\'%3EDP%3C/text%3E%3C/svg%3E';"/>
+      <div class="sb-orbit"></div>
+      <div class="sb-dot"></div>
     </div>
-    <h1>
-      <span class="h1-plain">Danielle</span>
-      <span class="h1-grad">Pontes.</span>
-    </h1>
-    <p class="hero-type" id="typer"></p>
-    <p class="hero-desc">
-      Professora efetiva de <strong>Licenciatura em Computação</strong> na Universidade do Estado do Amazonas.
-      Doutora em Ciência da Informação pela UnB. Pesquisadora no <strong>Samsung Ocean Center/UEA</strong> nas intersecções entre UX, Altmetria, IA e Tecnologias Educacionais.
-    </p>
-    <div class="hero-actions">
-      <a href="#pesquisa" class="btn btn-primary">Ver pesquisas →</a>
-      <a href="#ferramentas" class="btn btn-ghost">Ferramentas</a>
-    </div>
+    <div class="sb-name">Danielle Pompeu<br>Noronha Pontes</div>
+    <div class="sb-title">Dra. · Professora Efetiva UEA<br>Samsung Ocean Researcher</div>
+    <span class="sb-badge">🏅 PMP · PMI 2005</span>
   </div>
 
-  <aside class="pcard">
-    <div class="pcard-top">
-      <div class="pcard-avatar">DP</div>
-      <div class="pcard-name">Dra. Danielle Pompeu Noronha Pontes</div>
-      <div class="pcard-role">Professora Efetiva · UEA · Manaus, AM</div>
-    </div>
-    <div class="pcard-body">
-      <div class="pcard-tags">
-        <span class="ptag">UX Research</span><span class="ptag">Altmetria</span>
-        <span class="ptag">Ciência da Informação</span><span class="ptag">IA</span>
-        <span class="ptag">Ed. Tecnológica</span><span class="ptag">Bibliometria</span>
-      </div>
-      <div class="pcard-row"><div class="pcard-ico">🎓</div><span>Dra. Ciência da Informação · UnB (2025)<br/>MSc Engenharia Elétrica · USP (2012)</span></div>
-      <div class="pcard-row"><div class="pcard-ico">🔬</div><span>Samsung Ocean Center / UEA</span></div>
-      <div class="pcard-row"><div class="pcard-ico">🏛️</div><span>Universidade do Estado do Amazonas</span></div>
-      <a href="https://orcid.org/0000-0003-0036-6638" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.6rem;padding:.55rem .75rem;background:rgba(166,206,57,.07);border:1px solid rgba(166,206,57,.2);border-radius:8px;text-decoration:none;transition:all .18s" onmouseover="this.style.background='rgba(166,206,57,.14)'" onmouseout="this.style.background='rgba(166,206,57,.07)'">
-        <svg width="18" height="18" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="128" fill="#A6CE39"/><path d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.5 10.1 10.1z" fill="#fff"/></svg>
-        <span style="font-size:.72rem;font-weight:600;color:#A6CE39;letter-spacing:.04em">ORCID: 0000-0003-0036-6638</span>
-        <span style="margin-left:auto;font-size:.7rem;color:#A6CE39;opacity:.7">↗</span>
-      </a>
-      <div class="pcard-status">
-        <span class="sdot" aria-hidden="true"></span>
-        Aberta a colaborações
-      </div>
-    </div>
-  </aside>
-</section>
+  <nav class="sb-nav">
+    <div class="sb-nav-label">Perfil</div>
+    <a href="#sobre" class="sb-link on"><span class="sb-icon">👤</span>Sobre<span class="sb-count">Dra.</span></a>
+    <a href="#formacao" class="sb-link"><span class="sb-icon">🎓</span>Formação</a>
+    <a href="#atuacao" class="sb-link"><span class="sb-icon">🏛️</span>Atuação</a>
 
-<!-- ABOUT -->
-<section class="s s-alt s-border rv" id="sobre">
-  <div class="s-tag"><span class="s-tag-num">01</span>Sobre</div>
-  <h2>Quem <span class="dim">sou eu</span></h2>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>Sou <strong>Doutora em Ciência da Informação pela Universidade de Brasília (UnB)</strong>, professora efetiva da Universidade do Estado do Amazonas (UEA), onde atuo no curso de Licenciatura em Computação.</p>
-      <p>Minha formação percorre a Engenharia de Software (MSc/USP), a Computação (UFAM, UFC) e chega à Ciência da Informação — uma trajetória que me permite <strong>unir rigor técnico, análise de dados e compreensão humana</strong> dos sistemas de informação.</p>
-      <p>Pesquiso <strong>Engenharia de Software com foco em UX</strong>, indicadores altmétricos e bibliométricos, IA aplicada à informação científica e tecnologias educacionais. Sou pesquisadora no <strong>Samsung Ocean Center/UEA</strong> e fui coordenadora do PIBID (2014–2018).</p>
-      <p>Também sou <strong>Gerente de Projetos certificada PMP</strong> (PMI, 2006–2009), o que orienta minha atuação tanto na gestão acadêmica quanto no desenvolvimento de produtos.</p>
-      <div class="pull"><p>"Tecnologia que não considera a experiência humana não é solução — é só código."</p></div>
-    </div>
-    <div class="rv d2">
-      <div class="stats-grid">
-        <div class="stat"><div class="stat-n">2025</div><div class="stat-l">Doutorado UnB</div></div>
-        <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Produções técnico-científicas</div></div>
-        <div class="stat"><div class="stat-n">16+</div><div class="stat-l">Livros publicados/org.</div></div>
-        <div class="stat"><div class="stat-n">PMP</div><div class="stat-l">Certificação PMI</div></div>
-      </div>
+    <div class="sb-nav-label">Produção</div>
+    <a href="#producao" class="sb-link"><span class="sb-icon">📊</span>Contabilização<span class="sb-count">70</span></a>
+    <a href="#artigos" class="sb-link"><span class="sb-icon">📄</span>Artigos<span class="sb-count">3</span></a>
+    <a href="#congressos" class="sb-link"><span class="sb-icon">🏛️</span>Congressos<span class="sb-count">21</span></a>
+    <a href="#livros" class="sb-link"><span class="sb-icon">📚</span>Livros<span class="sb-count">16</span></a>
+
+    <div class="sb-nav-label">Técnica</div>
+    <a href="#apps" class="sb-link"><span class="sb-icon">💻</span>Aplicativos<span class="sb-count">6</span></a>
+    <a href="#patentes" class="sb-link"><span class="sb-icon">⚖️</span>Patentes INPI<span class="sb-count">2</span></a>
+
+    <div class="sb-nav-label">Acadêmico</div>
+    <a href="#orientacoes" class="sb-link"><span class="sb-icon">🎓</span>Orientações<span class="sb-count">4</span></a>
+    <a href="#eventos" class="sb-link"><span class="sb-icon">🎪</span>Eventos<span class="sb-count">6</span></a>
+    <a href="#contato" class="sb-link"><span class="sb-icon">✉️</span>Contato</a>
+  </nav>
+
+  <div class="sb-footer">
+    <div class="sb-orcid">
+      ORCID <a href="https://orcid.org/0000-0003-0036-6638" target="_blank">0000-0003-0036-6638</a><br>
+      Lattes <a href="http://lattes.cnpq.br/0735042255042649" target="_blank">0735042255042649</a><br>
+      <a href="mailto:dnoronha@uea.edu.br">dnoronha@uea.edu.br</a>
     </div>
   </div>
-</section>
+</aside>
 
-<!-- RESEARCH -->
-<section class="s rv" id="pesquisa">
-  <div class="s-tag"><span class="s-tag-num">02</span>Pesquisa</div>
-  <h2>Áreas de <span class="dim">atuação</span></h2>
-  <p class="s-sub">Investigo as intersecções entre experiência do usuário, métricas científicas, inteligência artificial e formação de professores em contextos tecnológicos.</p>
-  <div class="r-grid">
-    <div class="r-card rv d1"><div class="r-num">01</div><h3>UX &amp; Engenharia de Software</h3><p>Experiência do usuário aplicada ao desenvolvimento de software. Processos ágeis, avaliação de usabilidade e design centrado no ser humano para produtos tecnológicos.</p></div>
-    <div class="r-card rv d2"><div class="r-num">02</div><h3>Altmetria &amp; Bibliometria</h3><p>Indicadores altmétricos e bibliométricos para avaliação da ciência. Análise de disseminação de publicações científicas em redes sociais, incluindo detecção de bots no X (Twitter).</p></div>
-    <div class="r-card rv d3"><div class="r-num">03</div><h3>IA Aplicada à Informação</h3><p>Análise de sentimentos, classificação automática e recuperação de dados científicos. Uso de PLN para diferenciação de contas automatizadas e humanas em mídia social.</p></div>
-    <div class="r-card rv d4"><div class="r-num">04</div><h3>Tecnologias Educacionais</h3><p>Gamificação, letramento digital e ambientação em tecnologias educacionais. Formação de professores para o uso crítico e criativo de ferramentas digitais.</p></div>
-    <div class="r-card rv d5"><div class="r-num">05</div><h3>Ciência da Informação</h3><p>Representação, organização e recuperação da informação científica. Análise de colaboração internacional em publicações brasileiras e interoperabilidade de dados.</p></div>
-    <div class="r-card rv d6"><div class="r-num">06</div><h3>Diversidade em TI</h3><p>Presença feminina nos cursos de engenharia e tecnologia. Políticas públicas para inclusão e equidade de gênero na educação profissional e tecnológica.</p></div>
-  </div>
-</section>
-
-<!-- FERRAMENTAS -->
-<section class="s s-alt s-border rv tools-section" id="ferramentas">
-  <div class="s-tag"><span class="s-tag-num">03</span>Ferramentas Desenvolvidas</div>
-  <div class="tools-intro">
-    <div>
-      <h2>Produtos &amp; <span class="dim">Software</span></h2>
-      <p class="s-sub" style="margin-bottom:0">Ferramentas construídas para automatizar, analisar e apoiar a pesquisa científica e a gestão da informação acadêmica.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:.75rem;justify-content:center">
-      <div style="padding:1rem 1.25rem;background:var(--bg1);border:1px solid var(--border);border-radius:10px;font-size:.82rem;color:var(--text2);display:flex;gap:.75rem;align-items:center">
-        <span style="font-size:1.1rem">💡</span>
-        <span>Ferramentas desenvolvidas no contexto da pesquisa de doutorado e projetos de extensão na UEA.</span>
+<!-- ════════ MAIN ════════════════════════════════════════ -->
+<div class="main">
+  <header class="top-header">
+    <div class="top-header-inner">
+      <div class="th-breadcrumb">
+        <span>UEA</span><span class="th-bc-sep">›</span>
+        <span>Licenciatura em Informática</span><span class="th-bc-sep">›</span>
+        <span class="th-bc-cur">Currículo Lattes</span>
       </div>
-      <div style="padding:1rem 1.25rem;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:10px;font-size:.82rem;color:var(--violet-lt);display:flex;gap:.75rem;align-items:center">
-        <span style="font-size:1.1rem">🔗</span>
-        <span>Código disponível no GitHub. Colaborações são bem-vindas.</span>
+      <div class="th-actions">
+        <a href="http://lattes.cnpq.br/0735042255042649" target="_blank" class="th-btn">📋 Ver Lattes</a>
+        <a href="https://orcid.org/0000-0003-0036-6638" target="_blank" class="th-btn th-btn-primary">🆔 ORCID</a>
       </div>
     </div>
-  </div>
-  <div class="tools-grid">
+  </header>
 
-    <div class="tool-card rv d1">
-      <div class="tool-header">
-        <div class="tool-icon">🤖</div>
-        <span class="tool-status status-active">Publicado</span>
+  <div class="content">
+
+    <!-- HERO -->
+    <div class="hero-card" id="sobre">
+      <p class="hero-eyebrow">Currículo Acadêmico · Última atualização 27/02/2026</p>
+      <h1 class="hero-name">Danielle Pompeu <em>Noronha Pontes</em></h1>
+      <p class="hero-subtitle">Doutora em Ciência da Informação · Professora Efetiva UEA · Pesquisadora Samsung Ocean</p>
+      <p class="hero-bio">Professora efetiva da Universidade do Estado do Amazonas (UEA) desde 2008 em regime de dedicação exclusiva. Doutora pela UnB (2025), mestre pela USP (2012). Certificada PMP pelo PMI. Pesquisadora no Samsung Ocean Center. Atua em Engenharia de Software UX, Ciência da Informação, Tecnologias Educacionais e Gamificação.</p>
+      <div class="hero-tags">
+        <span class="htag">🔍 UX / Eng. Software</span>
+        <span class="htag">📊 Ciência da Informação</span>
+        <span class="htag">🎮 Gamificação</span>
+        <span class="htag">💻 Tec. Educacionais</span>
+        <span class="htag">📈 Altmetria</span>
+        <span class="htag">🤖 Detecção de Bots</span>
+        <span class="htag">📱 Mobile Learning</span>
       </div>
-      <h3>Extrator_ORCID_Crossref</h3>
-      <p>Ferramenta acadêmica para recuperação automatizada de dados científicos via ORCID e Crossref. Permite extrair, consolidar e exportar metadados de publicações de pesquisadores a partir de seus identificadores ORCID.</p>
-      <div class="tool-tech">
-        <span class="tech-tag">Python</span>
-        <span class="tech-tag">ORCID API</span>
-        <span class="tech-tag">Crossref API</span>
-        <span class="tech-tag">Bibliometria</span>
+    </div>
+
+    <!-- STATS ROW -->
+    <div class="stats-row sg">
+      <div class="sc" style="--sc-color:#0D9488"><span class="sc-num" data-to="70">0</span><span class="sc-label">Total de produções</span></div>
+      <div class="sc" style="--sc-color:#7C3AED"><span class="sc-num" data-to="16">0</span><span class="sc-label">Anos na UEA</span></div>
+      <div class="sc" style="--sc-color:#D97706"><span class="sc-num" data-to="16">0</span><span class="sc-label">Livros organizados</span></div>
+      <div class="sc" style="--sc-color:#E11D48"><span class="sc-num" data-to="2">0</span><span class="sc-label">Patentes INPI</span></div>
+    </div>
+
+    <!-- PRODUCTION DASHBOARD -->
+    <section class="sec rv" id="producao">
+      <div class="sec-title">
+        <div class="sec-icon">📊</div>
+        <span class="sec-label">Contabilização da Produção Científica e Técnica</span>
       </div>
-      <a href="https://github.com/danipontes" class="tool-link" target="_blank" rel="noopener">Ver no GitHub →</a>
-    </div>
 
-    <div class="tool-card rv d2">
-      <div class="tool-header">
-        <div class="tool-icon">📊</div>
-        <span class="tool-status status-active">Publicado</span>
-      </div>
-      <h3>Análise de Sentimentos — Bots vs. Humanos</h3>
-      <p>Sistema de classificação e análise de sentimentos para diferenciar contas de bots e humanos na disseminação de publicações científicas sobre COVID-19 no X (Twitter). Contribui para o aprimoramento de indicadores altmétricos.</p>
-      <div class="tool-tech">
-        <span class="tech-tag">Python</span>
-        <span class="tech-tag">PLN</span>
-        <span class="tech-tag">Machine Learning</span>
-        <span class="tech-tag">Altmetria</span>
-      </div>
-      <a href="https://github.com/danipontes" class="tool-link" target="_blank" rel="noopener">Ver no GitHub →</a>
-    </div>
-
-    <div class="tool-card rv d3">
-      <div class="tool-header">
-        <div class="tool-icon">🛡️</div>
-        <span class="tool-status status-active">Registrado INPI</span>
-      </div>
-      <h3>Sistema de Gestão — Segurança Operacional</h3>
-      <p>Software registrado no INPI (Instituto Nacional da Propriedade Industrial) para gestão de processos relacionados à segurança operacional. Desenvolvido com foco em usabilidade e fluxos de trabalho seguros.</p>
-      <div class="tool-tech">
-        <span class="tech-tag">Gestão</span>
-        <span class="tech-tag">UX</span>
-        <span class="tech-tag">INPI</span>
-      </div>
-      <a href="#contato" class="tool-link">Saber mais →</a>
-    </div>
-
-    <div class="tool-card rv d4">
-      <div class="tool-header">
-        <div class="tool-icon">✈️</div>
-        <span class="tool-status status-active">Legado</span>
-      </div>
-      <h3>APUS — Sistema para Gestão de Linhas Aéreas</h3>
-      <p>Sistema de gestão para operações de linhas aéreas, desenvolvido como projeto técnico pioneiro. Uma das primeiras produções técnicas que uniu engenharia de software e gestão de informação operacional complexa.</p>
-      <div class="tool-tech">
-        <span class="tech-tag">Engenharia de Software</span>
-        <span class="tech-tag">Gestão Operacional</span>
-      </div>
-      <a href="#contato" class="tool-link">Saber mais →</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- PUBLICATIONS -->
-<section class="s rv" id="publicacoes">
-  <div class="s-tag"><span class="s-tag-num">04</span>Publicações</div>
-  <h2>Produções <span class="dim">científicas</span></h2>
-  <p class="s-sub">Seleção de artigos em periódicos, conferências e livros publicados/organizados. Ver lista completa no Lattes e ORCID.</p>
-  <div class="pub-list">
-
-    <div class="pub-row rv">
-      <div class="pub-yr">2025</div>
-      <div>
-        <div class="pub-t">Usando análise de sentimentos para diferenciar bots e humanos na divulgação de publicações científicas sobre COVID-19 na mídia social X</div>
-        <div class="pub-v">BIBLIOS (Lima) · v. esp., p. e001-27 · JCR</div>
-      </div>
-      <span class="ptype pj">Periódico</span>
-    </div>
-
-    <div class="pub-row rv d1">
-      <div class="pub-yr">2024</div>
-      <div>
-        <div class="pub-t">A Pedagogical Proposal for the Integration of UX Techniques and Analysis Process in Software Development for Technology-Based Startups</div>
-        <div class="pub-v">17th Annual International Conference on Education, Research and Innovation (IATED) · Sevilha</div>
-      </div>
-      <span class="ptype pc">Conferência</span>
-    </div>
-
-    <div class="pub-row rv d2">
-      <div class="pub-yr">2024</div>
-      <div>
-        <div class="pub-t">Classificação de comunidades de atenção altmétrica no X avaliando a acurácia de algoritmos sob diferentes variáveis</div>
-        <div class="pub-v">9º Encontro Brasileiro de Bibliometria e Cientometria (EBBC) · Brasília</div>
-      </div>
-      <span class="ptype pc">Conferência</span>
-    </div>
-
-    <div class="pub-row rv d3">
-      <div class="pub-yr">2023</div>
-      <div>
-        <div class="pub-t">Indicadores de citação e altmétricos em nível de países e idiomas: análise em publicações brasileiras com colaboração internacional</div>
-        <div class="pub-v">Informação &amp; Informação (Online) · v. 27, p. 450</div>
-      </div>
-      <span class="ptype pj">Periódico</span>
-    </div>
-
-    <div class="pub-row rv d4">
-      <div class="pub-yr">2023</div>
-      <div>
-        <div class="pub-t">Presença feminina nos cursos de engenharia e tecnologia da Universidade do Estado do Amazonas</div>
-        <div class="pub-v">Brazilian Journal of Development · v. 9, p. 7944–7951</div>
-      </div>
-      <span class="ptype pj">Periódico</span>
-    </div>
-
-    <div class="pub-row rv d5">
-      <div class="pub-yr">2022</div>
-      <div>
-        <div class="pub-t">Educação, trabalho e cidadania: perspectivas produtivas e emancipatórias (Org.)</div>
-        <div class="pub-v">Editora UEA · 1. ed. · 104 p.</div>
-      </div>
-      <span class="ptype pl">Livro</span>
-    </div>
-
-  </div>
-  <div style="margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap">
-    <a href="http://lattes.cnpq.br/0735042255042649" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Ver todas no Lattes →</a>
-    <a href="https://orcid.org/0000-0003-0036-6638" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="display:inline-flex;align-items:center;gap:.5rem"><svg width="14" height="14" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="128" fill="#A6CE39"/><path d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.5 10.1 10.1z" fill="#fff"/></svg> Ver no ORCID →</a>
-  </div>
-</section>
-
-<!-- TEACHING -->
-<section class="s s-alt s-border rv" id="ensino">
-  <div class="s-tag"><span class="s-tag-num">05</span>Ensino</div>
-  <h2>Disciplinas &amp; <span class="dim">formação</span></h2>
-  <p class="s-sub">Professora efetiva da UEA no curso de Licenciatura em Computação. Coordenadora de cursos de especialização em Ensino Profissional e Letramento Digital.</p>
-  <div class="t-grid">
-    <div class="t-card rv d1">
-      <div class="t-top"><span class="t-lvl lg">Licenciatura</span></div>
-      <h3>Análise e Projeto de Sistemas</h3>
-      <p>Modelagem de sistemas, UML, processos de engenharia de software e desenvolvimento orientado a objetos aplicado à computação educacional.</p>
-    </div>
-    <div class="t-card rv d2">
-      <div class="t-top"><span class="t-lvl lg">Licenciatura</span></div>
-      <h3>Estrutura de Dados</h3>
-      <p>Fundamentos de estruturas de dados, algoritmos e programação. Autora de livros didáticos adotados na disciplina (Editora UEA, 2008–2009).</p>
-    </div>
-    <div class="t-card rv d3">
-      <div class="t-top"><span class="t-lvl lp">Especialização</span></div>
-      <h3>Ensino Profissional e Tecnológico</h3>
-      <p>Coordenação e docência no Curso de Especialização em Ensino Profissional e Tecnológico (EST/UEA). Políticas públicas para educação profissional.</p>
-    </div>
-    <div class="t-card rv d4">
-      <div class="t-top"><span class="t-lvl lp">Especialização</span></div>
-      <h3>Letramento Digital</h3>
-      <p>Coordenação do Curso de Especialização em Letramento Digital (EST/UEA). Tecnologias educacionais, inclusão digital e formação docente para ambientes virtuais.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="s rv" id="contato">
-  <div class="s-tag"><span class="s-tag-num">06</span>Contato</div>
-  <div class="c-grid">
-    <div>
-      <h2>Vamos <span class="dim">conversar?</span></h2>
-      <p class="c-lede">Aberta a <strong>colaborações em pesquisa</strong>, parcerias com o Samsung Ocean Center, orientações e projetos que unam tecnologia, informação e impacto real.</p>
-      <a href="mailto:dpnpontes@uea.edu.br" class="btn btn-primary">Enviar e-mail →</a>
-    </div>
-    <div class="link-stack">
-      <a href="https://github.com/danipontes" class="ext" target="_blank" rel="noopener">
-        <div class="ext-ico">🐙</div><div class="ext-body"><span class="ext-lbl">GitHub</span><span class="ext-val">github.com/danipontes</span></div><span class="ext-arr">↗</span>
-      </a>
-      <a href="http://lattes.cnpq.br/0735042255042649" class="ext" target="_blank" rel="noopener">
-        <div class="ext-ico">🎓</div><div class="ext-body"><span class="ext-lbl">Lattes CNPq</span><span class="ext-val">lattes.cnpq.br/0735042255042649</span></div><span class="ext-arr">↗</span>
-      </a>
-      <a href="https://orcid.org/0000-0003-0036-6638" class="ext" target="_blank" rel="noopener">
-        <div class="ext-ico" style="background:rgba(166,206,57,.1);border:1px solid rgba(166,206,57,.2)">
-          <svg width="18" height="18" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="128" fill="#A6CE39"/><path d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.5 10.1 10.1z" fill="#fff"/></svg>
+      <div class="prod-dashboard rv">
+        <div class="pd-header">
+          <div class="pd-title">Distribuição por tipo de produção</div>
+          <div class="pd-total">Total: <strong id="grandTotal">0</strong> itens</div>
         </div>
-        <div class="ext-body"><span class="ext-lbl">ORCID</span><span class="ext-val">orcid.org/0000-0003-0036-6638</span></div>
-        <span class="ext-arr" style="color:#A6CE39">↗</span>
-      </a>
-      <a href="https://www.uea.edu.br" class="ext" target="_blank" rel="noopener">
-        <div class="ext-ico">🏛️</div><div class="ext-body"><span class="ext-lbl">Instituição</span><span class="ext-val">Universidade do Estado do Amazonas</span></div><span class="ext-arr">↗</span>
-      </a>
-      <a href="mailto:dpnpontes@uea.edu.br" class="ext">
-        <div class="ext-ico">✉️</div><div class="ext-body"><span class="ext-lbl">E-mail</span><span class="ext-val">dpnpontes@uea.edu.br</span></div><span class="ext-arr">↗</span>
-      </a>
-    </div>
-  </div>
-</section>
+        <div class="pd-grid sg">
 
-<footer>
-  <span class="f-l">© 2025 Danielle Pompeu Noronha Pontes</span>
-  <span class="f-c">Dra. Danielle Pontes · UEA</span>
-  <span class="f-r">Manaus, AM · Brasil</span>
-</footer>
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#CCFBF1">📄</div>
+              <div>
+                <div class="pd-n" style="color:#0D9488" data-to="3">0</div>
+                <div class="pd-lbl">Artigos em Periódicos</div>
+              </div>
+            </div>
+            <div class="pd-sub">BIBLIOS JCR · Inf.&amp;Inf. · Brazilian J. Dev.</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#0D9488" data-pct="4"></div></div>
+          </div>
+
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#DBEAFE">🏛️</div>
+              <div>
+                <div class="pd-n" style="color:#2563EB" data-to="18">0</div>
+                <div class="pd-lbl">Trabalhos Completos em Congressos</div>
+              </div>
+            </div>
+            <div class="pd-sub">ICERI · INTED · CBIE · WIE · ENANCIB · EBBC · WGPS</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#2563EB" data-pct="26"></div></div>
+          </div>
+
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#EDE9FE">📝</div>
+              <div>
+                <div class="pd-n" style="color:#7C3AED" data-to="3">0</div>
+                <div class="pd-lbl">Resumos Expandidos em Congressos</div>
+              </div>
+            </div>
+            <div class="pd-sub">EBBC 2024 (2) · ENANCIB 2023 (1)</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#7C3AED" data-pct="4"></div></div>
+          </div>
+
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#CCFBF1">📚</div>
+              <div>
+                <div class="pd-n" style="color:#0D9488" data-to="16">0</div>
+                <div class="pd-lbl">Livros Organizados / Editados</div>
+              </div>
+            </div>
+            <div class="pd-sub">Editora UEA 2022 (11) · UEA Editora/Edições 2007–09 (5)</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#0D9488" data-pct="23"></div></div>
+          </div>
+
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#FEF3C7">🎤</div>
+              <div>
+                <div class="pd-n" style="color:#D97706" data-to="4">0</div>
+                <div class="pd-lbl">Apresentações de Trabalho</div>
+              </div>
+            </div>
+            <div class="pd-sub">Conferências (2) · Seminários (2)</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#D97706" data-pct="6"></div></div>
+          </div>
+
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#DCFCE7">⚖️</div>
+              <div>
+                <div class="pd-n" style="color:#16A34A" data-to="2">0</div>
+                <div class="pd-lbl">Patentes Registradas INPI</div>
+              </div>
+            </div>
+            <div class="pd-sub">DR Safety (2014) · DRADD (2015)</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#16A34A" data-pct="3"></div></div>
+          </div>
+
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#DCFCE7">💻</div>
+              <div>
+                <div class="pd-n" style="color:#16A34A" data-to="4">0</div>
+                <div class="pd-lbl">Programas de Computador</div>
+              </div>
+            </div>
+            <div class="pd-sub">Extrator ORCID · APUS · CODS · CONNEXUS</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#16A34A" data-pct="6"></div></div>
+          </div>
+
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#FEF3C7">🏫</div>
+              <div>
+                <div class="pd-n" style="color:#D97706" data-to="2">0</div>
+                <div class="pd-lbl">Cursos de Curta Duração</div>
+              </div>
+            </div>
+            <div class="pd-sub">Visual Basic 5 (1998) · Softwares Gratuitos (2014)</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#D97706" data-pct="3"></div></div>
+          </div>
+
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#EDE9FE">🎪</div>
+              <div>
+                <div class="pd-n" style="color:#7C3AED" data-to="6">0</div>
+                <div class="pd-lbl">Eventos / Mostras Organizadas</div>
+              </div>
+            </div>
+            <div class="pd-sub">I–IV Mostra Soft. Educ. · Lab. Exp. · Sem. Informática</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#7C3AED" data-pct="9"></div></div>
+          </div>
+
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#CCFBF1">🎓</div>
+              <div>
+                <div class="pd-n" style="color:#0D9488" data-to="4">0</div>
+                <div class="pd-lbl">Orientações Concluídas (IC + TCC)</div>
+              </div>
+            </div>
+            <div class="pd-sub">IC FAPEAM (2) · TCC (2) — UEA</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#0D9488" data-pct="6"></div></div>
+          </div>
+
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#FFE4E6">📋</div>
+              <div>
+                <div class="pd-n" style="color:#E11D48" data-to="2">0</div>
+                <div class="pd-lbl">Bancas de TCC</div>
+              </div>
+            </div>
+            <div class="pd-sub">SISCONP · Sismaqweb — UEA 2010</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#E11D48" data-pct="3"></div></div>
+          </div>
+
+          <div class="pd-item">
+            <div class="pd-row">
+              <div class="pd-ico" style="background:#FEF3C7">🔎</div>
+              <div>
+                <div class="pd-n" style="color:#D97706" data-to="1">0</div>
+                <div class="pd-lbl">Relatório de Pesquisa</div>
+              </div>
+            </div>
+            <div class="pd-sub">Estudo de Caso ER — 1996</div>
+            <div class="pd-progress"><div class="pd-bar" style="background:#D97706" data-pct="1"></div></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMAÇÃO -->
+    <section class="sec rv" id="formacao">
+      <div class="sec-title"><div class="sec-icon">🎓</div><span class="sec-label">Formação Acadêmica</span></div>
+      <div class="tl sg">
+        <div class="tli"><div class="tly">2021–2025</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Doutorado em Ciências da Informação</div><div class="tlo">Universidade de Brasília — UnB · Bolsista CAPES</div><div class="tlx">Classificação de Contas entre Bots e Humanas que Divulgam Artigos Científicos no X. Orientador: João de Melo Maricatto.</div></div></div>
+        <div class="tli"><div class="tly">2008–2012</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Mestrado em Engenharia Elétrica</div><div class="tlo">Universidade de São Paulo — USP</div><div class="tlx">Evolução de Software Baseada em Avaliação de Arquiteturas. Orientador: Reginaldo Arakaki.</div></div></div>
+        <div class="tli"><div class="tly">2014–2015</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">MBA em Desenvolvimento de Startups de Software (370h)</div><div class="tlo">IGTI — Instituto de Gestão em Tecnologia da Informação</div><div class="tlx">Uma Proposta de Processo Ágil de Gestão de Startup de Software. Orient.: Fernando Hadad Zaidan.</div></div></div>
+        <div class="tli"><div class="tly">1998–2002</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Especialização em Ciência da Computação — lato sensu (369h)</div><div class="tlo">Universidade Federal do Ceará — UFC</div><div class="tlx">Mapeamento Objeto-Relacional. Orientadora: Vania Vidal.</div></div></div>
+        <div class="tli"><div class="tly">1992–1996</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Graduação em Processamento de Dados</div><div class="tlo">Universidade Federal do Amazonas — UFAM</div></div></div>
+        <div class="tli"><div class="tly">1989–1991</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Curso Técnico em Informática</div><div class="tlo">Fundação Mathias Machiline — FMM</div></div></div>
+      </div>
+    </section>
+
+    <!-- ATUAÇÃO -->
+    <section class="sec rv" id="atuacao">
+      <div class="sec-title"><div class="sec-icon">🏛️</div><span class="sec-label">Atuação Profissional</span></div>
+      <p class="sub">Universidade do Estado do Amazonas — UEA</p>
+      <div class="tl sg">
+        <div class="tli"><div class="tly">2008–Atual</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Professora Efetiva — Dedicação Exclusiva (40h)</div><div class="tlo">Licenciatura em Informática / Tecnologia em Processamento de Dados</div><div class="tlx">Disciplinas: Análise e Projeto de Sistemas, Engenharia de Software, Banco de Dados, Estrutura de Dados, Lógica de Programação, Projeto de Software Educacional, POO, Linguagens de Programação, Tópicos Avançados em Informática, entre outras.</div></div></div>
+        <div class="tli"><div class="tly">2019–Atual</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Pesquisadora — Samsung Ocean 2.0 / Estúdio</div><div class="tlo">Samsung Ocean Center / UEA — P&amp;D com a Samsung</div><div class="tlx">Desenvolvimento de conteúdos digitais dos cursos presenciais do Ocean. Coordenadora, com 3 alunos de graduação.</div></div></div>
+        <div class="tli"><div class="tly">2019–Atual</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Coordenadora — Especialização em Tecnologias Educacionais para EPT (EAD)</div><div class="tlo">UEA</div></div></div>
+        <div class="tli"><div class="tly">2018–2020</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Coordenadora Pedagógica — Especialização em Letramento Digital</div><div class="tlo">UEA / EST — modalidade EAD</div></div></div>
+        <div class="tli"><div class="tly">2013–2018</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Coordenadora do Curso de Licenciatura em Computação</div><div class="tlo">UEA — Membro do NDE (Núcleo Docente Estruturante) 2015–2018</div></div></div>
+        <div class="tli"><div class="tly">2014–2017</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Coordenadora de Área — PIBID</div><div class="tlo">UEA — Programa Institucional de Bolsa de Iniciação à Docência · 18 alunos</div></div></div>
+        <div class="tli"><div class="tly">2015–</div><div class="tlm"><div class="tld"></div><div class="tll"></div></div><div class="tlb"><div class="tlr">Revisora de Periódico — EDUCITEC</div><div class="tlo">Revista de Estudos e Pesquisas sobre Ensino Tecnológico</div></div></div>
+      </div>
+      <p class="sub">Experiências Anteriores</p>
+      <div class="g3 sg">
+        <div class="card"><div class="c-meta">2002–2005</div><div class="c-title">Analista de Sistemas — FUCAPI</div><div class="c-desc">Sistema RICOLA. Docência em Banco de Dados I.</div></div>
+        <div class="card"><div class="c-meta">2000–2001</div><div class="c-title">Analista de Sistemas — Secrel</div><div class="c-desc">Sistema MC2 e sistema Eureka para web. ASP, VB6, SQL. Well Loja.</div></div>
+        <div class="card"><div class="c-meta">1997</div><div class="c-title">Analista de Sistemas — IPT/AM</div><div class="c-desc">SAT — Sistema de Automação de Audiências. Estudo Itautec/Philips. Ministrou VB 5.0.</div></div>
+        <div class="card"><div class="c-meta">1996–1998</div><div class="c-title">Coordenadora &amp; Professora — SODECAM</div><div class="c-desc">Curso de Processamento de Dados. Computador e Sociedade, Auditoria de Sistemas.</div></div>
+        <div class="card"><div class="c-meta">1992–1994</div><div class="c-title">Programadora — BEA</div><div class="c-desc">Banco do Estado do Amazonas. Sistemas SFAF / COBR / CCVA / DESC.</div></div>
+        <div class="card"><div class="c-meta">1991</div><div class="c-title">Estágio — Multibras S/A</div><div class="c-desc">Programação e manutenção do Sistema de Custos.</div></div>
+      </div>
+    </section>
+
+    <!-- PATENTES -->
+    <section class="sec rv" id="patentes">
+      <div class="sec-title"><div class="sec-icon">⚖️</div><span class="sec-label">Patentes Registradas — INPI</span><span class="sec-count">2</span></div>
+      <div class="g2 sg">
+        <div class="card card-accent pat-card"><div class="c-ico" style="background:#CCFBF1">🛡️</div><div class="pat-num">Reg. Nº 13716-1 · INPI · 15/07/2014</div><div class="c-title">DR SAFETY — Software de Automação de Gerenciamento de Segurança Operacional</div><div class="c-desc">Programa de computador registrado no INPI. Co-autoria: Aguiar, R.</div><a href="https://lattes.cnpq.br/0735042255042649" target="_blank" rel="noopener" class="c-link">Ver no Lattes →</a></div>
+        <div class="card card-accent pat-card"><div class="c-ico" style="background:#CCFBF1">✍️</div><div class="pat-num">Reg. Nº BRS12013000125-0 · INPI · 31/03/2015</div><div class="c-title">DRADD — Assinatura Digital de Documentos</div><div class="c-desc">Programa de computador registrado no INPI. Co-autoria: Aguiar, R.</div><a href="https://lattes.cnpq.br/0735042255042649" target="_blank" rel="noopener" class="c-link">Ver no Lattes →</a></div>
+      </div>
+    </section>
+
+    <!-- APLICATIVOS -->
+    <section class="sec rv" id="apps">
+      <div class="sec-title"><div class="sec-icon">💻</div><span class="sec-label">Programas de Computador Desenvolvidos</span><span class="sec-count">4</span></div>
+      <div class="g2 sg">
+        <div class="card card-accent"><div class="c-ico" style="background:#CCFBF1">⚙️</div><div class="c-meta">2026</div><div class="c-title">Extrator_ORCID_Crossref</div><div class="c-desc">Recuperação automatizada de dados científicos via ORCID e Crossref. Co-autores: Nascimento, M.R.; Santos, R.M.; Barbalho, C.</div><a href="https://orcid.org/0000-0003-0036-6638" target="_blank" class="c-link">Ver no ORCID →</a></div>
+        <div class="card card-accent"><div class="c-ico" style="background:#CCFBF1">✈️</div><div class="c-meta">2002</div><div class="c-title">APUS — Sistema para Gestão de Linhas Aéreas</div><div class="c-desc">Sistema completo para gestão e controle de linhas aéreas.</div><a href="https://lattes.cnpq.br/0735042255042649" target="_blank" class="c-link">Ver no Lattes →</a></div>
+        <div class="card card-accent"><div class="c-ico" style="background:#CCFBF1">📋</div><div class="c-meta">2005</div><div class="c-title">CODS — Controle de Diárias, Passagens e Suprimento</div><div class="c-desc">Sistema administrativo para gestão de diárias e suprimentos corporativos.</div><a href="https://lattes.cnpq.br/0735042255042649" target="_blank" class="c-link">Ver no Lattes →</a></div>
+        <div class="card card-accent"><div class="c-ico" style="background:#CCFBF1">🔗</div><div class="c-meta">2005</div><div class="c-title">CONNEXUS</div><div class="c-desc">Plataforma de conexão registrada como produção técnica no Lattes.</div><a href="https://lattes.cnpq.br/0735042255042649" target="_blank" class="c-link">Ver no Lattes →</a></div>
+      </div>
+    </section>
+
+    <!-- ARTIGOS -->
+    <section class="sec rv" id="artigos">
+      <div class="sec-title"><div class="sec-icon">📄</div><span class="sec-label">Artigos Completos em Periódicos</span><span class="sec-count">3</span></div>
+      <div class="sg">
+        <div class="ai"><div class="ai-tag">2025 · BIBLIOS (Lima) — JCR</div><div class="ai-title">Usando análise de sentimentos para diferenciar bots e humanos na divulgação de publicações científicas sobre COVID-19 na mídia social X</div><div class="ai-ref"><strong>Pontes, Danielle Pompeu Noronha</strong>; Maricato, João de Melo. <em>BIBLIOS (LIMA)</em>, v. esp, p. e001-27, 2025.</div><a href="https://doi.org/10.5195/biblios.2025.1122" target="_blank" class="ai-link">Acessar artigo →</a></div>
+        <div class="ai"><div class="ai-tag">2023 · Informação &amp; Informação (Online)</div><div class="ai-title">Indicadores de citação e altmétricos em nível de países e idiomas: análise em publicações brasileiras com colaboração internacional</div><div class="ai-ref"><strong>Pontes, D.P.N.</strong>; Maricato, J.M.; Silva, M.R. <em>Informação &amp; Informação (Online)</em>, v. 27, p. 450, 2023.</div><a href="https://ojs.uel.br/revistas/uel/index.php/informacao/article/view/48072" target="_blank" class="ai-link">Acessar artigo →</a></div>
+        <div class="ai"><div class="ai-tag">2023 · Brazilian Journal of Development</div><div class="ai-title">Presença feminina nos cursos de engenharia e tecnologia da Universidade do Estado do Amazonas</div><div class="ai-ref">Figueiredo, I.S.G.; Leal, C.C.S.; <strong>Pontes, Danielle Pompeu Noronha</strong>. <em>Brazilian Journal of Development</em>, v. 9, p. 7944-7951, 2023.</div><a href="https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/view/57490" target="_blank" class="ai-link">Acessar artigo →</a></div>
+      </div>
+    </section>
+
+    <!-- CONGRESSOS -->
+    <section class="sec rv" id="congressos">
+      <div class="sec-title"><div class="sec-icon">🏛️</div><span class="sec-label">Congressos — Trabalhos Completos, Resumos &amp; Apresentações</span><span class="sec-count">21</span></div>
+      <p class="sub">Trabalhos Completos em Anais — 18 trabalhos</p>
+      <div class="sg">
+        <div class="ai"><div class="ai-tag">2024 · ICERI, Sevilha — IATED</div><div class="ai-title">A Pedagogical Proposal for the Integration of UX Techniques and Analysis Process in Software Development for Technology-Based Startups</div><div class="ai-ref"><strong>Pompeu Noronha Pontes, Danielle</strong>; Oliveira Mota Flores, Amanda Cristina. 17th annual ICERI, 2024. p. 9748.</div><a href="https://library.iated.org/view/PONTES2024PED" target="_blank" class="ai-link">Ver publicação →</a></div>
+        <div class="ai"><div class="ai-tag">2024 · ICERI, Sevilha — IATED</div><div class="ai-title">A Bibliometric Study of Scientific Production on Learning Analytics: A Historical Analysis of the Period from 2004 to 2022</div><div class="ai-ref"><strong>Pompeu Noronha Pontes, Danielle</strong>. 17th annual ICERI, 2024. p. 8847-8856.</div></div>
+        <div class="ai"><div class="ai-tag">2023 · INTED, Valencia</div><div class="ai-title">Evaluation of the Impact of the Transition from Face-to-Face Education to Emergency Remote Education in a Technological Training Program in the State of Amazonas</div><div class="ai-ref"><strong>Pompeu Noronha Pontes, Danielle</strong>; Mota, Amanda; Marques, Silvio. 17th INTED, 2023. p. 628.</div></div>
+        <div class="ai"><div class="ai-tag">2023 · INTED, Valencia</div><div class="ai-title">Evaluation of the Impact of the Return of On-Site Activities After the Period of the COVID-19 Pandemic in a Technological Training Program in the State of Amazonas</div><div class="ai-ref"><strong>Pompeu Noronha Pontes, Danielle</strong>; Mota, Amanda; Marques, Silvio. 17th INTED, 2023. p. 4023.</div></div>
+        <div class="ai"><div class="ai-tag">2022 · 8º EBBC, Maceió</div><div class="ai-title">Correlações entre indicadores de citação e altmétricos: análise de artigos brasileiros com colaboração internacional</div><div class="ai-ref"><strong>Pontes, D.P.N.</strong>; Maricato, J.M.; Silva, M.R. 8º EBBC, 2022. v. 8, p. 660-668.</div></div>
+        <div class="ai"><div class="ai-tag">2022 · XXII ENANCIB, Porto Alegre</div><div class="ai-title">Detecção de Bots que Divulgam Artigos Científicos no Twitter: Contribuições para Aprimoramento dos Indicadores Altmétricos</div><div class="ai-ref"><strong>Pontes, D.P.N.</strong>; Maricato, J.M. XXII ENANCIB, 2022. v. 22.</div></div>
+        <div class="ai"><div class="ai-tag">2018 · ICERI, Sevilha</div><div class="ai-title">The Use of Design Science Research in the Construction of Gamified Institutional Digital Repositories</div><div class="ai-ref"><strong>Pontes, Danielle</strong>. 11th annual ICERI, 2018, Seville. p. 1302.</div></div>
+        <div class="ai"><div class="ai-tag">2017 · VI CBIE, Recife</div><div class="ai-title">Quimicon, jogo educacional para a aprendizagem da Tabela Periódica no Ensino Médio</div><div class="ai-ref">Silva, Eduardo; Duarte, J.C.; <strong>Pontes, Danielle</strong>. VI CBIE, 2017. p. 276.</div></div>
+        <div class="ai"><div class="ai-tag">2017 · XXIII WIE, Recife</div><div class="ai-title">Tecnologias na educação: Utilização do software de autoria Hot Potatoes na aprendizagem de geografia</div><div class="ai-ref">Santos, Luiz; Santos, Nivia; <strong>Pontes, Danielle Noronha</strong>; Hounsell, Janemar. XXIII WIE, 2017. p. 1022.</div></div>
+        <div class="ai"><div class="ai-tag">2016 · INTED, Sevilha</div><div class="ai-title">Gamified Educational Software Architecture: A Case Study Based on the Reference Model Learning Technology Systems Architecture</div><div class="ai-ref"><strong>Pontes, Danielle</strong>; Oliveira, Leonor. INTED, 2016. p. 4687.</div></div>
+        <div class="ai"><div class="ai-tag">2016 · INTED, Sevilha</div><div class="ai-title">Methods and Techniques for Gamification Educational Software: A Systematic Review</div><div class="ai-ref"><strong>Pontes, Danielle</strong>; Martins, Juliana. INTED, 2016. p. 710.</div></div>
+        <div class="ai"><div class="ai-tag">2016 · Workshops CBIE, Uberlândia</div><div class="ai-title">Softwares educacionais: O papel do licenciado em computação na escola</div><div class="ai-ref">Santos, Nivia; <strong>Pontes, Danielle Noronha</strong>; Santos, Luiz; Hounsell, Janemar. Workshops CBIE, 2016. p. 363.</div></div>
+        <div class="ai"><div class="ai-tag">2015 · ICERI, Sevilha — IATED</div><div class="ai-title">The Use of Mobile Learning and Blended Learning in Implementing the Concept Flipped Classroom for Teacher Training in the Brazilian Amazon</div><div class="ai-ref"><strong>Pontes, D.P.N.</strong>; Silva, D. 8th ICERI, 2015. p. 3010-3017.</div><a href="https://library.iated.org/view/PONTES2015THE" target="_blank" class="ai-link">Ver publicação →</a></div>
+        <div class="ai"><div class="ai-tag">2015 · 6º Simpósio Hipertexto, Recife — NEHTE/UFPE</div><div class="ai-title">Gamificação no Ensino: Uma Revisão Sistemática da Literatura no Cenário Brasileiro</div><div class="ai-ref">Nascimento, S.; Cardoso Mota, R.; <strong>Pontes, D.P.N.</strong> 6º Simpósio Hipertexto, 2015. p. 1-13.</div></div>
+        <div class="ai"><div class="ai-tag">2013 · XXII Seminário de Computação, Blumenau</div><div class="ai-title">Processo de Desenvolvimento de Software Educacional aplicado à Alfabetização de Crianças</div><div class="ai-ref">Guimarães, R.A.; <strong>Pontes, D.P.N.</strong> XXII Seminário de Computação, 2013. v. 1.</div></div>
+        <div class="ai"><div class="ai-tag">2011 · STIN, Santo Ângelo &amp; XVII CACIC, La Plata</div><div class="ai-title">Evolução de software baseada em avaliação de Arquitetura de Software</div><div class="ai-ref"><strong>Noronha, D.P.</strong> STIN 2011 e XVII Congreso Argentino de Ciencias de la Computación, 2011.</div></div>
+        <div class="ai"><div class="ai-tag">2010 · III WGPS, Belém</div><div class="ai-title">Utilizando Modelo Fuzzy para estimar prazo e custo de use case</div><div class="ai-ref"><strong>Noronha, D.P.</strong> III Workshop de Gerenciamento de Projetos de Software, 2010, Belém. p. 1.</div></div>
+      </div>
+      <p class="sub">Resumos Expandidos — 3</p>
+      <div class="sg">
+        <div class="ai"><div class="ai-tag">2024 · 9º EBBC, Brasília</div><div class="ai-title">Classificação de comunidades de atenção altmétrica no X avaliando a acurácia de algoritmos sob diferentes variáveis</div><div class="ai-ref"><strong>Pontes, Danielle Pompeu Noronha</strong>; Maricato, João de Melo. 9º EBBC, 2024. v. 1.</div></div>
+        <div class="ai"><div class="ai-tag">2024 · 9º EBBC, Brasília</div><div class="ai-title">Padrões de comportamento das contas bots e humanas na mídia X por meio da análise de sentimentos no ChatGPT</div><div class="ai-ref"><strong>Pontes, Danielle Pompeu Noronha</strong>; Maricato, João de Melo. 9º EBBC, 2024.</div></div>
+        <div class="ai"><div class="ai-tag">2023 · ENANCIB, Aracaju-SE</div><div class="ai-title">Classificação de contas do Twitter, através do Botometer</div><div class="ai-ref"><strong>Pontes, D.P.N.</strong>; Maricato, J.M. ENANCIB, 2023.</div></div>
+      </div>
+      <p class="sub">Apresentações de Trabalho — 4</p>
+      <div class="g2 sg">
+        <div class="card"><div class="c-meta">2019 · Conferência / Palestra</div><div class="c-title">Educação aberta e a formação em Letramento Digital</div></div>
+        <div class="card"><div class="c-meta">2018 · Conferência / Palestra</div><div class="c-title">A Gamificação e a Ciência da Informação</div></div>
+        <div class="card"><div class="c-meta">2015 · Seminário</div><div class="c-title">Mobile Learning e Aprendizagem Ativa no Ensino de Graduação</div></div>
+        <div class="card"><div class="c-meta">2015 · Seminário</div><div class="c-title">Mobile Learning e Aprendizagem Ativa: Experiências e Expectativas</div></div>
+      </div>
+    </section>
+
+    <!-- LIVROS -->
+    <section class="sec rv" id="livros">
+      <div class="sec-title"><div class="sec-icon">📚</div><span class="sec-label">Livros Organizados / Editados</span><span class="sec-count">16</span></div>
+      <div class="g3 sg">
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">📘</div><div class="c-meta">2022 · Editora UEA · 104p</div><div class="c-title">Educação, trabalho e cidadania: perspectivas produtivas e emancipatórias</div><div class="c-desc">Andrade, A.N.; <strong>Pontes, D.N.</strong>; Figueiredo, I.S.G.; Carvalho, J.M. (Orgs.)</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">💻</div><div class="c-meta">2022 · Editora UEA · 75p</div><div class="c-title">Ambientação em tecnologias educacionais</div><div class="c-desc">Antonaccio, A.M.; <strong>Pontes, D.N.</strong>; Figueiredo, I.S.G.; Carvalho, J.M. (Orgs.)</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">🎓</div><div class="c-meta">2022 · Editora UEA · 91p</div><div class="c-title">Currículos e programas da educação profissional e tecnológica</div><div class="c-desc">Silva, R.S.; <strong>Pontes, D.N.</strong>; Figueiredo, I.S.G.; Carvalho, J.M. (Orgs.)</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">🔬</div><div class="c-meta">2022 · Editora UEA · 79p</div><div class="c-title">Fundamentos e metodologia da pesquisa educacional</div><div class="c-desc">Antonaccio, A.M.; <strong>Pontes, D.N.</strong>; Figueiredo, I.S.G.; Carvalho, J.M. (Orgs.)</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">📝</div><div class="c-meta">2022 · Editora UEA · 48p</div><div class="c-title">Prática docente na educação profissional e tecnológica: plano de ação</div><div class="c-desc">Albuquerque, L.M.; <strong>Pontes, D.N.</strong>; Figueiredo, I.S.G.; Carvalho, J.M. (Orgs.)</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">🧠</div><div class="c-meta">2022 · Editora UEA · 79p</div><div class="c-title">Fundamentos psicológicos da educação e a educação profissional e tecnológica</div><div class="c-desc">Rotondano, E.V.; <strong>Pontes, D.N.</strong>; Figueiredo, I.S.G.; Carvalho, J.M. (Orgs.)</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">🖥️</div><div class="c-meta">2022 · Editora UEA · 76p</div><div class="c-title">Saberes docentes no contexto das novas tecnologias</div><div class="c-desc">Machado, A.B.L.; <strong>Pontes, D.N.</strong>; Figueiredo, I.S.G.; Carvalho, J.M. (Orgs.)</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">♿</div><div class="c-meta">2022 · Editora UEA · 87p</div><div class="c-title">Tecnologia assistiva na educação e práticas pedagógicas inclusivas</div><div class="c-desc">Mourão, A.B.; <strong>Pontes, D.N.</strong>; Figueiredo, I.S.G.; Carvalho, J.M. (Orgs.)</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">📱</div><div class="c-meta">2022 · Editora UEA · 70p</div><div class="c-title">Tecnologias digitais e práticas pedagógicas na EPT</div><div class="c-desc">Mourão, A.B.; <strong>Pontes, D.N.</strong>; Figueiredo, I.S.G.; Carvalho, J.M. (Orgs.)</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">📋</div><div class="c-meta">2022 · Editora UEA · 130p</div><div class="c-title">Planejamento educacional e processos de avaliação na EPT</div><div class="c-desc">Gomes, S.R.; <strong>Pontes, D.N.</strong>; Figueiredo, I.S.G.; Carvalho, J.M. (Orgs.)</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">⚖️</div><div class="c-meta">2022 · Editora UEA · 124p</div><div class="c-title">Políticas públicas e legislação da educação profissional e tecnológica</div><div class="c-desc">Gomes, S.R.; <strong>Pontes, D.N.</strong>; Figueiredo, I.S.G.; Carvalho, J.M. (Orgs.)</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">🗂️</div><div class="c-meta">2009 · UEA Editora · 246p</div><div class="c-title">Análise e Projeto de Sistemas 1</div><div class="c-desc">Mourão, A.B.; Gorayeb, D.M.C.; <strong>Noronha, D.P.</strong></div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">🗂️</div><div class="c-meta">2009 · UEA Editora · 206p</div><div class="c-title">Análise e Projeto de Sistemas 2</div><div class="c-desc">Bandeira, A.N.; Gorayeb, D.M.C.; <strong>Noronha, D.P.</strong></div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">🧮</div><div class="c-meta">2008 · UEA Editora · 144p</div><div class="c-title">Laboratório de Estrutura de Dados I</div><div class="c-desc">Valente, D.V.; <strong>Noronha, D.P.</strong>; Silva, S.R.B.</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">📐</div><div class="c-meta">2008 · UEA Editora · 104p</div><div class="c-title">Estrutura de Dados I</div><div class="c-desc">Valente, D.V.; <strong>Noronha, D.P.</strong>; Pereira, E.C.</div></div>
+        <div class="card card-amber"><div class="c-ico" style="background:#FEF3C7">💡</div><div class="c-meta">2007 · UEA Edições · 130p</div><div class="c-title">Introdução à Lógica de Programação I</div><div class="c-desc"><strong>Noronha, D.P.</strong>; Valente, D.V.; Santiago, Marcus Fabiano.</div></div>
+      </div>
+    </section>
+
+    <!-- EVENTOS -->
+    <section class="sec rv" id="eventos">
+      <div class="sec-title"><div class="sec-icon">🎪</div><span class="sec-label">Eventos Organizados &amp; Exposições</span><span class="sec-count">6</span></div>
+      <div class="g3 sg">
+        <div class="card card-violet"><div class="c-meta">2015</div><div class="c-title">IV Mostra de Software Educacional da UEA/EST</div><div class="c-desc">Organização. Exposição de softwares educacionais: Dengue, História, Lúdico, LP/Matemática, ARITHMÓS.</div></div>
+        <div class="card card-violet"><div class="c-meta">2014</div><div class="c-title">III Mostra de Software Educacional da UEA</div><div class="c-desc">Organização do evento anual. Exposição de produções discentes.</div></div>
+        <div class="card card-violet"><div class="c-meta">2013</div><div class="c-title">II Mostra de Software Educacional UEA/EST</div><div class="c-desc">Organização e coordenação.</div></div>
+        <div class="card card-violet"><div class="c-meta">2012</div><div class="c-title">I Mostra de Software Educacional da EST-UEA</div><div class="c-desc">Criação e organização da primeira edição.</div></div>
+        <div class="card card-violet"><div class="c-meta">2012</div><div class="c-title">Laboratório Experimental em Software Educacional</div><div class="c-desc">UEA/EST.</div></div>
+        <div class="card card-violet"><div class="c-meta">1997</div><div class="c-title">I Semana de Informática das Faculdades Objetivo</div><div class="c-desc">Organização e participação.</div></div>
+      </div>
+    </section>
+
+    <!-- ORIENTAÇÕES -->
+    <section class="sec rv" id="orientacoes">
+      <div class="sec-title"><div class="sec-icon">🎓</div><span class="sec-label">Orientações &amp; Bancas</span><span class="sec-count">7</span></div>
+      <p class="sub">Orientações Concluídas — IC &amp; TCC</p>
+      <div class="g2 sg">
+        <div class="card"><div class="c-meta">2016 · IC · Bolsa FAPEAM</div><div class="c-title">Arquitetura de Software Educacional Gamificado: Estudo de Caso baseado no LTSA</div><div class="c-desc">Leonor Joana Ramos Oliveira. Licenciatura em Informática — UEA.</div></div>
+        <div class="card"><div class="c-meta">2016 · IC</div><div class="c-title">Métodos e Técnicas para Gamificação de Software Educacional: Revisão Sistemática</div><div class="c-desc">Juliana Fernandes Martins. Licenciatura em Informática — UEA.</div></div>
+        <div class="card"><div class="c-meta">2013 · TCC</div><div class="c-title">Proposta de Processo para Desenvolvimento de Software Educacional com Foco em Alfabetização</div><div class="c-desc">Raimundo Alder dos Santos Guimarães. Tecnologia em ADS — UEA.</div></div>
+        <div class="card"><div class="c-meta">2012 · TCC</div><div class="c-title">QRSPEECH: App Móvel para Auxiliar Deficientes Visuais usando QR Code</div><div class="c-desc">Kamila Marques de Brito. Tecnologia em ADS — UEA.</div></div>
+      </div>
+      <p class="sub">Em Andamento &amp; Bancas</p>
+      <div class="g2 sg">
+        <div class="card"><div class="c-meta">2017– · IC · Bolsa FAPEAM</div><div class="c-title">Arquitetura de Software no desenvolvimento de Apps Móveis Educacionais Gamificados</div><div class="c-desc">Gabriel de Oliveira Araújo. Licenciatura em Informática — UEA.</div></div>
+        <div class="card"><div class="c-meta">2010 · Bancas de TCC · Tecnologia em Processamento de Dados — UEA</div><div class="c-title">SISCONP (Adheli Tavares) &amp; Sismaqweb (Adriele Salles Lira)</div><div class="c-desc">Participação em bancas de trabalhos de conclusão de curso.</div></div>
+      </div>
+      <p class="sub">Áreas de Atuação</p>
+      <div class="tags sg">
+        <span class="tag tag-teal">Engenharia de Software / UX</span>
+        <span class="tag tag-teal">Gamificação</span>
+        <span class="tag tag-teal">Software Educacional</span>
+        <span class="tag tag-teal">Tecnologias Educacionais</span>
+        <span class="tag tag-teal">Altmetria / Bibliometria</span>
+        <span class="tag tag-teal">Ciência da Informação</span>
+        <span class="tag tag-teal">Banco de Dados</span>
+        <span class="tag tag-teal">Linguagens de Programação</span>
+        <span class="tag tag-teal">Sistemas de Informação</span>
+        <span class="tag tag-teal">Mobile Learning</span>
+        <span class="tag tag-amber">Português — Fluente</span>
+        <span class="tag tag-amber">Inglês — Avançado</span>
+        <span class="tag tag-amber">Espanhol — Intermediário</span>
+        <span class="tag tag-amber">Francês — Básico</span>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="sec rv" id="contato">
+      <div class="sec-title"><div class="sec-icon">✉️</div><span class="sec-label">Contato &amp; Links</span></div>
+      <div class="cc-grid sg">
+        <div class="cc"><div class="cc-ico">🆔</div><div><div class="cc-lbl">ORCID iD</div><div class="cc-val"><a href="https://orcid.org/0000-0003-0036-6638" target="_blank">0000-0003-0036-6638</a></div></div></div>
+        <div class="cc"><div class="cc-ico">📋</div><div><div class="cc-lbl">Lattes CNPq</div><div class="cc-val"><a href="http://lattes.cnpq.br/0735042255042649" target="_blank">0735042255042649</a></div></div></div>
+        <div class="cc"><div class="cc-ico">✉️</div><div><div class="cc-lbl">E-mail Institucional</div><div class="cc-val"><a href="mailto:dnoronha@uea.edu.br">dnoronha@uea.edu.br</a></div></div></div>
+        <div class="cc"><div class="cc-ico">🌐</div><div><div class="cc-lbl">Site / GitHub Pages</div><div class="cc-val"><a href="https://danipontes.github.io" target="_blank">danipontes.github.io</a></div></div></div>
+        <div class="cc"><div class="cc-ico">📞</div><div><div class="cc-lbl">Telefone</div><div class="cc-val"><a href="tel:+559288325770">(92) 8832-5770</a></div></div></div>
+        <div class="cc"><div class="cc-ico">🏛️</div><div><div class="cc-lbl">Endereço</div><div class="cc-val">Av. Darcy Vargas, 1200 — Parque 10<br>Manaus, AM · CEP 69065-020<br><a href="https://www.uea.edu.br" target="_blank">www.uea.edu.br</a></div></div></div>
+      </div>
+    </section>
+
+  </div><!-- /content -->
+
+  <footer class="footer">
+    <strong>Danielle Pompeu Noronha Pontes, Dra.</strong> · Universidade do Estado do Amazonas ·
+    <a href="https://danipontes.github.io" target="_blank">danipontes.github.io</a> ·
+    <a href="mailto:dnoronha@uea.edu.br">dnoronha@uea.edu.br</a><br>
+    <span style="font-size:.68rem;opacity:.4">Currículo Lattes · Última atualização 27/02/2026</span>
+  </footer>
+</div><!-- /main -->
+</div><!-- /layout -->
 
 <script>
-// Typewriter
-const phrases=['UX · Altmetria · IA · Ed. Tecnológica','Ciência da Informação · UnB 2025','Samsung Ocean Center / UEA','Licenciatura em Computação · Manaus'];
-const el=document.getElementById('typer');
-let pi=0,ci=0,del=false,pause=0;
-function type(){
-  if(pause>0){pause--;setTimeout(type,60);return}
-  const p=phrases[pi];
-  if(!del){el.innerHTML=p.slice(0,++ci)+'<span class="cur"></span>';
-    if(ci===p.length){del=true;pause=28}setTimeout(type,60)}
-  else{el.innerHTML=p.slice(0,--ci)+'<span class="cur"></span>';
-    if(ci===0){del=false;pi=(pi+1)%phrases.length;pause=6}setTimeout(type,32)}
+// ── Intersection Observer ──────────────────────────
+const io = new IntersectionObserver(e => {
+  e.forEach(x => { if (!x.isIntersecting) return; x.target.classList.add('on'); io.unobserve(x.target); });
+}, { threshold: .07, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.rv, .sg').forEach(el => io.observe(el));
+
+// ── Timeline lines ─────────────────────────────────
+const lo = new IntersectionObserver(e => {
+  e.forEach(x => { if (!x.isIntersecting) return; x.target.style.animation = 'lineGrow .75s .1s cubic-bezier(.22,1,.36,1) both'; lo.unobserve(x.target); });
+}, { threshold: .3 });
+document.querySelectorAll('.tll').forEach(l => lo.observe(l));
+
+// ── Counter animation ──────────────────────────────
+function animCount(el, delay = 0) {
+  const t = +el.dataset.to;
+  const dur = Math.min(1600, Math.max(500, t * 70));
+  const step = Math.max(dur / t, 30);
+  setTimeout(() => {
+    let c = 0;
+    const r = setInterval(() => { el.textContent = Math.min(++c, t); if (c >= t) clearInterval(r); }, step);
+  }, delay);
 }
-type();
+const cio = new IntersectionObserver(e => {
+  e.forEach(x => {
+    if (!x.isIntersecting) return;
+    x.target.querySelectorAll('[data-to]').forEach((el, i) => animCount(el, i * 100));
+    cio.unobserve(x.target);
+  });
+}, { threshold: .3 });
+document.querySelectorAll('.stats-row, .pd-grid').forEach(g => cio.observe(g));
+const gt = document.getElementById('grandTotal');
+if (gt) {
+  const gio = new IntersectionObserver(e => { e.forEach(x => { if (!x.isIntersecting) return; animCount(gt, 300); gio.unobserve(x.target); }); }, { threshold: .5 });
+  gio.observe(gt);
+}
 
-// Scroll reveal
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.07});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+// ── Progress bars ──────────────────────────────────
+const pio = new IntersectionObserver(e => {
+  e.forEach(x => {
+    if (!x.isIntersecting) return;
+    x.target.querySelectorAll('.pd-bar[data-pct]').forEach(b => {
+      setTimeout(() => { b.style.width = b.dataset.pct + '%'; }, 200);
+    });
+    pio.unobserve(x.target);
+  });
+}, { threshold: .2 });
+document.querySelectorAll('.pd-grid').forEach(g => pio.observe(g));
 
-// Active nav
-const secs=document.querySelectorAll('section[id]');
-const links=document.querySelectorAll('.nav-links a');
-new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
-  links.forEach(a=>a.classList.remove('on'));
-  const a=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-  if(a)a.classList.add('on')}})},{rootMargin:'-40% 0px -55% 0px'})
-  .observe(...Array.from(secs));
+// ── Nav active ─────────────────────────────────────
+const secs = document.querySelectorAll('section[id], .hero-card, .prod-dashboard');
+const links = document.querySelectorAll('.sb-link');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id || 'sobre'; });
+  links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + cur));
+}, { passive: true });
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}})});
+// ── Mobile sidebar ─────────────────────────────────
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('mobOverlay');
+const toggle  = document.getElementById('mobToggle');
+function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('on'); }
+toggle.addEventListener('click', () => { sidebar.classList.toggle('open'); overlay.classList.toggle('on'); });
+overlay.addEventListener('click', closeSidebar);
+document.querySelectorAll('.sb-link').forEach(l => l.addEventListener('click', () => { if (window.innerWidth < 768) closeSidebar(); }));
+
+// ── Card 3D tilt ───────────────────────────────────
+document.querySelectorAll('.card, .sc, .cc').forEach(c => {
+  c.addEventListener('mousemove', e => {
+    const r = c.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width - .5) * 8;
+    const y = ((e.clientY - r.top)  / r.height - .5) * 8;
+    c.style.transform = `translateY(-2px) rotateX(${-y*.3}deg) rotateY(${x*.3}deg)`;
+  });
+  c.addEventListener('mouseleave', () => { c.style.transform = ''; });
+});
 </script>
 </body>
 </html>
